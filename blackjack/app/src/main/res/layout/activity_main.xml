@@ -23,9 +23,16 @@
                 android:id="@+id/img_deck"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="100dp"
                 android:onClick="img_deck"
                 android:src="@drawable/card_back"></ImageView>
+
+            <ImageView
+                android:id="@+id/img_invis"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:onClick="img_deck"
+                android:src="@drawable/card_back"
+                android:visibility="invisible"></ImageView>
 
             <ImageView
                 android:id="@+id/img_dealer_revealed"
@@ -61,7 +68,7 @@
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:minHeight="150dp">
 
             <ImageView
