@@ -1,9 +1,10 @@
 package com.grandpad.blackjack.app;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,7 +13,42 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button hit = (Button) findViewById(R.id.btn_hit);
+        Button doubledown = (Button) findViewById(R.id.btn_double);
+        Button split = (Button) findViewById(R.id.btn_split);
+
+
     }
+
+    public void hitCommands(View view) {
+        // If hit is clicked hide all buttons besides hit and stand
+        //TO-DO add another card
+        btn_double.setVisibility(View.GONE);
+        btn_split.setVisibility(View.GONE);
+
+    }
+
+    public void doubledownCommands(View view) {
+        // If doubleDown is clicked hide all buttons besides next round (not made yet)
+        // TO-DO double the bet and add last card
+        btn_double.setVisibility(View.GONE);
+        btn_split.setVisibility(View.GONE);
+        btn_bet.setVisibility(View.GONE);
+
+    }
+
+    public void splitCommands(View view) {
+        // If split is clicked hide all buttons besides hit and stand
+        //and display which hand they're playing on
+        // TO-DO double the bet and add another card
+        btn_double.setVisibility(View.GONE);
+        btn_split.setVisibility(View.GONE);
+        btn_bet.setVisibility(View.GONE);
+        tv_text_lefthand.setVisibility(View.VISIBLE);
+
+    }
+
+
 
 
     @Override
