@@ -4,20 +4,29 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    Button btn_hit;
+    Button btn_double;
+    Button btn_split;
+    Button btn_stand;
+    Button btn_bet;
+    TextView tv_text_lefthand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button hit = (Button) findViewById(R.id.btn_hit);
-        Button doubledown = (Button) findViewById(R.id.btn_double);
-        Button split = (Button) findViewById(R.id.btn_split);
-
-
+        btn_hit = (Button) findViewById(R.id.btn_hit);
+        btn_double = (Button) findViewById(R.id.btn_double);
+        btn_split = (Button) findViewById(R.id.btn_split);
+        btn_bet = (Button) findViewById(R.id.btn_bet);
+        btn_stand = (Button) findViewById(R.id.btn_stand);
     }
 
     public void hitCommands(View view) {
