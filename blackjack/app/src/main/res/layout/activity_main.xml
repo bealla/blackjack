@@ -4,9 +4,10 @@
     android:background="@android:color/background_dark"
     android:gravity="left"
     android:orientation="horizontal"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:baselineAligned="false">
 
-    <TableLayout
+<TableLayout
         android:layout_width="750dp"
         android:layout_height="wrap_content"
         android:layout_gravity="top|left"
