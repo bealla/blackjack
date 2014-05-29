@@ -113,12 +113,12 @@
             android:layout_height="25dp"
             android:text="Bet:" />
 
-        <TextView
-            android:id="@+id/tv_text_lefthand"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Playing Left Hand"
-            android:visibility="invisible"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_text_lefthand"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:text="Playing Left Hand"-->
+            <!--android:visibility="invisible"/>-->
 
         <TextView
             android:id="@+id/tv_text_bet"
