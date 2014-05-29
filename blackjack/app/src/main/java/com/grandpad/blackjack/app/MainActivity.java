@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start_screen);
         btn_hit = (Button) findViewById(R.id.btn_hit);
         btn_double = (Button) findViewById(R.id.btn_double);
         btn_split = (Button) findViewById(R.id.btn_split);
