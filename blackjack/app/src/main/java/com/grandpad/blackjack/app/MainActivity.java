@@ -6,24 +6,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    //buttons on the right
     Button btn_split;
     Button btn_double;
     Button btn_hit;
     Button btn_stand;
 
+    //alt names for the buttons listed above
     Button btn_minus_one;
     Button btn_minus_five;
     Button btn_plus_one;
     Button btn_plus_five;
 
+    //standalone buttons
     Button btn_bet;
     Button btn_cancel_bet;
 //    TextView tv_text_lefthand; TODO: add splitting
+
+    //cards
+
+    ImageView img_deck;
+    ImageView img_dealer_revealed;
+    ImageView img_dealer_hidden;
+    ImageView img_player_1;
+    ImageView img_player_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +54,21 @@ public class MainActivity extends ActionBarActivity {
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
 
-        //TODO: create set bet screen
         setBetScreen();
-        //TODO: create set first choice screen
-        //TODO: create set hit/stand screen
+        setFirstChoice();
+        setHitScreen();
+    }
 
+    private void setFirstChoice() {
+        //TODO: fill in
+    }
+
+    private void setHitScreen() {
+        //TODO: fill in
     }
 
     public void setBetScreen() {
-
+        //TODO: fill in
     }
 
     public void hitCommands(View view) {
