@@ -89,6 +89,7 @@ public class MainActivity extends ActionBarActivity {
         //setHitScreen();
     }
 
+    //TODO: button on_click listeners. Will check for current state. Logic will be based off current state
 
     public void setBetScreen() {
         img_deck.setVisibility(View.INVISIBLE);
