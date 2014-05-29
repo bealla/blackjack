@@ -14,35 +14,32 @@ public class MainActivity extends ActionBarActivity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
     int chips;
+    screens currentScreen;
 
+    public enum screens {BET, FIRSTCHOICE, HIT, SPLIT, GAMEOVER};
     //buttons on the right
     Button btn_split;
     Button btn_double;
     Button btn_hit;
     Button btn_stand;
-
     //alt names for the buttons listed above
     Button btn_minus_one;
     Button btn_minus_five;
     Button btn_plus_one;
     Button btn_plus_five;
-
     //standalone buttons
     Button btn_bet;
     Button btn_cancel_bet;
+    ImageView img_deck;
 //    TextView tv_text_lefthand; TODO: add splitting
 
     //cards
-
-    ImageView img_deck;
     ImageView img_dealer_revealed;
     ImageView img_dealer_hidden;
     ImageView img_player_1;
     ImageView img_player_2;
-
     TextView tv_text_bank;
     TextView tv_text_bet;
-
     //card arrays
     int[] deck = new int[53];
     int[] dealer_hand = new int[10];
@@ -84,14 +81,41 @@ public class MainActivity extends ActionBarActivity {
 
         tv_text_bank.setText(chips);
 
-        //setBetScreen();
-        setFirstChoice();
+        setBetScreen();
+        //setFirstChoice();
         //setHitScreen();
     }
 
     //TODO: button on_click listeners. Will check for current state. Logic will be based off current state
+    public void split(View v) {
+        switch (currentScreen) {
+            case BET;
+        }
+
+    }
+
+    public void doubleHand(View v) {
+
+    }
+
+    public void hit(View v) {
+
+    }
+
+    public void stand(View v) {
+
+    }
+
+    public void bet(View v) {
+
+    }
+
+    public void cancelBet(View v) {
+
+    }
 
     public void setBetScreen() {
+        currentScreen = screens.BET;
         img_deck.setVisibility(View.INVISIBLE);
         img_dealer_revealed.setVisibility(View.INVISIBLE);
         img_dealer_hidden.setVisibility(View.INVISIBLE);
@@ -105,6 +129,7 @@ public class MainActivity extends ActionBarActivity {
         btn_plus_one.setTextColor(Color.TRANSPARENT);
         btn_minus_five.setTextColor(Color.TRANSPARENT);
         btn_plus_five.setTextColor(Color.TRANSPARENT);
+
     }
 
     private void setFirstChoice() {
@@ -141,6 +166,7 @@ public class MainActivity extends ActionBarActivity {
         // TODO: double the bet and add last card
 
     }
+
 
 //    public void splitCommands(View view) {
 //        // If split is clicked hide all buttons besides hit and stand
