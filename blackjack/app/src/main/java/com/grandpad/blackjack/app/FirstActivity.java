@@ -1,13 +1,13 @@
 package com.grandpad.blackjack.app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
 import android.view.View;
 
 
-public class StartActivity extends ActionBarActivity {
+public class FirstActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class StartActivity extends ActionBarActivity {
     public void toMainActivity(View view) {
         //on start new button click go to main activity
 
-        Intent intent = new Intent(StartActivity.this, MainActivity.class);
-        StartActivity(intent);
+        Intent intent = new Intent(FirstActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }
