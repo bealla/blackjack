@@ -208,8 +208,7 @@ public class MainActivity extends ActionBarActivity {
     private int getNextCard() {
         int i = -1;
         i = nextCard.nextInt(53);
-        if (!checkAlreadyUsed(i)) {
-        } else {
+        if (checkAlreadyUsed(i)) {
             i = getNextCard();
         }
         return i;
@@ -217,7 +216,11 @@ public class MainActivity extends ActionBarActivity {
 
     private boolean checkAlreadyUsed(int i) {
         boolean used = false;
-        for (int k : deck) {
+        for (int k : dealer_hand) {
+            if (k == i)
+                used = true;
+        }
+        for (int k : player_hand) {
             if (k == i)
                 used = true;
         }
