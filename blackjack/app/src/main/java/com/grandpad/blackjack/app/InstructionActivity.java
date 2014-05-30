@@ -19,23 +19,23 @@ public class InstructionActivity extends FirstActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.howto_screen);
         ImageView arrow = (ImageView) findViewById(R.id.arrow);
+        ImageView arrow2 = (ImageView) findViewById(R.id.arrow2);
+        ImageView arrow3 = (ImageView) findViewById(R.id.arrow3);
 
         arrow=(ImageView)findViewById(R.id.arrow);
         Animation mAnimation = new AlphaAnimation(1, 0);
-        mAnimation.setDuration(300);
+        mAnimation.setDuration(450);
         mAnimation.setInterpolator(new LinearInterpolator());
-        mAnimation.setRepeatCount(Animation.INFINITE);
+        mAnimation.setRepeatCount(Animation.ABSOLUTE);
         mAnimation.setRepeatMode(Animation.REVERSE);
         arrow.startAnimation(mAnimation);
-        arrow.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                v.clearAnimation();
+        arrow2=(ImageView)findViewById(R.id.arrow2);
+        arrow2.startAnimation(mAnimation);
 
+        arrow3=(ImageView)findViewById(R.id.arrow3);
+        arrow3.startAnimation(mAnimation);
 
-            }
-        });
 
     }
 }
