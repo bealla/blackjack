@@ -14,9 +14,12 @@ public class MainActivity extends ActionBarActivity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
     int chips;
+    int currentBet;
     screens currentScreen;
 
-    public enum screens {BET, FIRSTCHOICE, HIT, SPLIT, GAMEOVER};
+    public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
+
+    ;
     //buttons on the right
     Button btn_split;
     Button btn_double;
@@ -80,6 +83,8 @@ public class MainActivity extends ActionBarActivity {
         tv_text_bet = (TextView) findViewById(R.id.tv_text_bet);
 
         tv_text_bank.setText(chips);
+        currentBet = 0;
+        tv_text_bet.setText(currentBet);
 
         setBetScreen();
         //setFirstChoice();
@@ -89,29 +94,53 @@ public class MainActivity extends ActionBarActivity {
     //TODO: button on_click listeners. Will check for current state. Logic will be based off current state
     public void split(View v) {
         switch (currentScreen) {
-            case BET;
+            case BET:
+                break;//subtract 1
+            case FIRSTCHOICE:
+                break;//splits
+        }
+    }
+
+    public void doubleHand(View v) {
+        switch (currentScreen) {
+            case BET:
+                break;//minus 5
+            case FIRSTCHOICE:
+                break; //set double down and goto game over
         }
 
     }
 
-    public void doubleHand(View v) {
-
-    }
-
     public void hit(View v) {
-
+        switch (currentScreen) {
+            case BET:
+                break;//plus 1
+            case FIRSTCHOICE:
+                break; //hits then set screen to hit
+        }
     }
 
     public void stand(View v) {
-
+        switch (currentScreen) {
+            case BET:
+                break;//plus 5
+            case FIRSTCHOICE:
+                break; //stop and set screen to game over
+        }
     }
 
     public void bet(View v) {
-
+        switch (currentScreen) {
+            case BET:
+                break;//sets bet /goto firstchoice
+        }
     }
 
     public void cancelBet(View v) {
-
+        switch (currentScreen) {
+            case BET:
+                break;//setbet to 0 and continue
+        }
     }
 
     public void setBetScreen() {
