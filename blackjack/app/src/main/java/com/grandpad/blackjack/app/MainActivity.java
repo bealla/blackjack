@@ -61,10 +61,10 @@ public class MainActivity extends ActionBarActivity {
         //TODO: what if at 0 chips? results screen with New Game button.
         //TODO: popup "here's 1000 to start with"
 
-        if (chips == 0)
+        if (chips == 0) {
             chips = 1000;
             haveChips();
-
+        }
 
 
         btn_split = (Button) findViewById(R.id.btn_split);
@@ -93,8 +93,6 @@ public class MainActivity extends ActionBarActivity {
         dealer_row = (TableRow) findViewById(R.id.dealer_row);
 
         setBetScreen();
-        //setFirstChoice();
-        //setHitScreen();
     }
 
     public void split(View v) {
@@ -122,8 +120,9 @@ public class MainActivity extends ActionBarActivity {
             case FIRSTCHOICE://set double down and goto game over
                 // make sure doesn't exceed chips available
                 if (chips >= currentBet * 2) {
+                    chips = chips - currentBet;
+                    tv_text_bank.setText(String.valueOf(chips));
                     currentBet = currentBet * 2;
-                    tv_text_bet.setText(String.valueOf(currentBet));
                     updateBet();
                     playerHand.add(getNextCard());
                     showPlayerHand();
@@ -217,7 +216,7 @@ public class MainActivity extends ActionBarActivity {
         // popup not enough chips
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage("Have some more chips ");
-        builder.setTitle("Chips";
+        builder.setTitle("Chips");
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
