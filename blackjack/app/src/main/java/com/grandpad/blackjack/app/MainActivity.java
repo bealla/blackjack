@@ -198,7 +198,7 @@ public class MainActivity extends ActionBarActivity {
 
         //TODO: display hands
         showPlayerHand();
-        showDealerHand();
+        showDealerHand(true);
     }
 
     private int getNextCard() {
@@ -224,8 +224,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void showPlayerHand() {
-
-        //TODO: make this do stuff
         for (int k : player_hand) {
             if (k != 0) //make sure its an initialized variable. no card will ever be 0
             {
@@ -233,6 +231,27 @@ public class MainActivity extends ActionBarActivity {
                 view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
                 player_row.addView(view, 100, 150);
             }
+        }
+    }
+
+    private void showDealerHand(boolean hidden) { //checks to see if one card should be hidden
+        if (!hidden) {
+            for (int k : dealer_hand) {
+                if (k != 0) //make sure its an initialized variable. no card will ever be 0
+                {
+                    ImageView view = new ImageView(MainActivity.this);
+                    view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
+                    dealer_row.addView(view, 100, 150);
+                }
+            }
+        } else {
+            int k = dealer_hand[1]; //should always have a card. be careful of calling this method if it doesn't
+            ImageView view = new ImageView(MainActivity.this);
+            view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
+            dealer_row.addView(view, 100, 150);
+            ImageView back = new ImageView(MainActivity.this);
+            view.setImageResource(R.drawable.card_back);
+            dealer_row.addView(back, 100, 150);
         }
     }
 
@@ -417,9 +436,6 @@ public class MainActivity extends ActionBarActivity {
         return imageID;
     }
 
-    private void showDealerHand() {
-        //TODO: make this do stuff
-    }
 
 
     /*
