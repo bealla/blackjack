@@ -61,6 +61,9 @@ public class MainActivity extends ActionBarActivity {
         //TODO: what if at 0 chips? results screen with New Game button.
         //TODO: popup "here's 1000 to start with"
 
+        if (chips == 0)
+            chips = 1000;
+        //have some new chips
         btn_split = (Button) findViewById(R.id.btn_split);
         btn_double = (Button) findViewById(R.id.btn_double);
         btn_hit = (Button) findViewById(R.id.btn_hit);
