@@ -527,32 +527,24 @@ public class MainActivity extends ActionBarActivity {
             dealerHand.add(getNextCard());
         }
         showDealerHand(false);
-        btn_split.setVisibility(View.INVISIBLE);
-        btn_double.setVisibility(View.INVISIBLE);
-        btn_hit.setVisibility(View.INVISIBLE);
-        btn_stand.setVisibility(View.INVISIBLE);
-        btn_hit.setVisibility(View.INVISIBLE);
-        btn_cancel_bet.setVisibility(View.INVISIBLE);
+        btn_split.setVisibility(View.GONE);
+        btn_double.setVisibility(View.GONE);
+        btn_hit.setVisibility(View.GONE);
+        btn_stand.setVisibility(View.GONE);
+        btn_hit.setVisibility(View.GONE);
+        btn_cancel_bet.setVisibility(View.GONE);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         settings.edit().putInt("chips", chips).commit();
 
-        LinearLayout ll_wrapper = (LinearLayout) findViewById(R.id.ll_wrapper);
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         int winnings = currentBet;//todo: wrap this in if/else for win/lose
-        String msg = "You bet: " + currentBet + "/nYou won: " + winnings; //todo: add if else for different messages
-        builder.setMessage("test")
-                .setTitle(R.string.dialog_title);
 
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-                Intent intent = new Intent(MainActivity.this, FirstActivity.class);
-                startActivity(intent);
-            }
-        });
-        AlertDialog dialog = builder.create();
         //todo: popup showing who won and how much. How much is left. then go back to the other screen
+        Button myButton = new Button(this);
+        myButton.setText("Next Round");
+        LinearLayout ll_rightColumn = (LinearLayout) findViewById(R.id.ll_rightColumn);
+        ll_rightColumn.addView(myButton, 175, 100);
+
     }
 
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
