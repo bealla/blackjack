@@ -21,6 +21,16 @@
             android:minHeight="150dp">
 
             <ImageView
+                android:id="@+id/arrow"
+                android:layout_gravity="center|left"
+                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:visibility="visible"
+                android:src="@drawable/arrow"
+                android:onClick="flashArrow">
+            </ImageView>
+
+            <ImageView
                 android:id="@+id/img_deck"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
@@ -33,35 +43,20 @@
                 android:layout_height="match_parent"
                 android:onClick="img_deck"
                 android:src="@drawable/card_back"
-                android:visibility="invisible"
-                android:layout_column="2"></ImageView>
+                android:visibility="invisible"></ImageView>
 
             <ImageView
                 android:id="@+id/img_dealer_revealed"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/card_club_01"
-                android:layout_column="3"></ImageView>
+                android:src="@drawable/card_club_01"></ImageView>
 
 
             <ImageView
                 android:id="@+id/img_dealer_hidden"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/card_back"
-                android:layout_column="4"></ImageView>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <CheckedTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New CheckedTextView"
-                android:id="@+id/checkedTextView"
-                android:layout_column="1" />
+                android:src="@drawable/card_back"></ImageView>
         </TableRow>
 
         <TableRow
@@ -97,8 +92,7 @@
                 android:id="@+id/img_player_2"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/card_spade_12"
-                android:layout_column="2"></ImageView>
+                android:src="@drawable/card_spade_12"></ImageView>
         </TableRow>
     </TableLayout>
 
