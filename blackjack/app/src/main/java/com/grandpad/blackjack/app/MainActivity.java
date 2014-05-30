@@ -1,8 +1,5 @@
 package com.grandpad.blackjack.app;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -252,6 +249,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
+
     private void showDealerHand(boolean hidden) { //checks to see if one card should be hidden
         dealer_row.removeAllViews();
         if (!hidden) {
@@ -542,6 +540,12 @@ public class MainActivity extends ActionBarActivity {
         //todo: popup showing who won and how much. How much is left. then go back to the other screen
         Button myButton = new Button(this);
         myButton.setText("Next Round");
+        myButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         LinearLayout ll_rightColumn = (LinearLayout) findViewById(R.id.ll_rightColumn);
         ll_rightColumn.addView(myButton, 175, 100);
 
