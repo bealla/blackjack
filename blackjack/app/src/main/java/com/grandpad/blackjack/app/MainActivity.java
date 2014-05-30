@@ -120,9 +120,8 @@ public class MainActivity extends ActionBarActivity {
                 // make sure doesn't exceed chips available
                 if (chips >= currentBet * 2) {
                     currentBet = currentBet * 2;
-                    playerHand.add(getNextCard());
-                    updateBet();
                     tv_text_bet.setText(String.valueOf(currentBet));
+                    updateBet();
                     playerHand.add(getNextCard());
                     showPlayerHand();
                     setResultScreen();
