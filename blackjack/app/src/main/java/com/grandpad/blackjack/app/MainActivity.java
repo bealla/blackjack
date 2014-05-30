@@ -233,7 +233,6 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
-
     private void showDealerHand(boolean hidden) { //checks to see if one card should be hidden
         if (!hidden) {
             for (int k : dealer_hand) {
@@ -245,12 +244,12 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         } else {
-            int k = dealer_hand[1]; //should always have a card. be careful of calling this method if it doesn't
+            int k = dealer_hand[0]; //should always have a card. be careful of calling this method if it doesn't
             ImageView view = new ImageView(MainActivity.this);
             view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
             dealer_row.addView(view, 100, 150);
             ImageView back = new ImageView(MainActivity.this);
-            view.setImageResource(R.drawable.card_back);
+            back.setImageResource(R.drawable.card_back);
             dealer_row.addView(back, 100, 150);
         }
     }
