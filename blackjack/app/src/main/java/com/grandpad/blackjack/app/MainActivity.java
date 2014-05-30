@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
         tv_text_bank = (TextView) findViewById(R.id.tv_text_bank);
         tv_text_bet = (TextView) findViewById(R.id.tv_text_bet);
 
-        tv_text_bank.setText(chips);
+        tv_text_bank.setText(String.valueOf(chips));
         currentBet = 0;
         tv_text_bet.setText(currentBet);
 
