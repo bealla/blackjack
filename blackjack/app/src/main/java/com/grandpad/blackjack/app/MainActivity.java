@@ -42,7 +42,6 @@ public class MainActivity extends ActionBarActivity {
     TableRow player_row;
     TableRow dealer_row;
     //card arrays
-    int[] deck = new int[53];
     ArrayList<Integer> dealerHand = new ArrayList<Integer>();
     ArrayList<Integer> playerHand = new ArrayList<Integer>();
 
@@ -53,10 +52,6 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         chips = settings.getInt("chips", 1000); //get saved chips. if non-existent set to 1000
-
-        for (int i : deck) {
-            deck[i] = i;
-        }
 
         btn_split = (Button) findViewById(R.id.btn_split);
         btn_double = (Button) findViewById(R.id.btn_double);
@@ -458,7 +453,8 @@ public class MainActivity extends ActionBarActivity {
     private void setHitScreen() {
         //TODO: fill in
         currentScreen = screens.HIT;
-
+        btn_split.setVisibility(View.INVISIBLE);
+        btn_double.setVisibility(View.INVISIBLE);
     }
 
     public void updateBet() {
