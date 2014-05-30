@@ -116,6 +116,11 @@ public class MainActivity extends ActionBarActivity {
             case FIRSTCHOICE://set double down and goto game over
                 currentBet = currentBet * 2;
                 //todo: make sure doesn't exceed chips available
+                if (chips >= currentBet * 2) {
+                    currentBet = currentBet *2;
+                    updateBet();
+                } else
+                    notEnoughChips();
                 tv_text_bet.setText(String.valueOf(currentBet));
                 playerHand.add(getNextCard());
                 showPlayerHand();
