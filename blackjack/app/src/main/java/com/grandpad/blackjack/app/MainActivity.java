@@ -232,6 +232,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void showPlayerHand() {
+        player_row.removeAllViews();
         for (int k : playerHand) {
             if (k != 0) //make sure its an initialized variable. no card will ever be 0
             {
@@ -242,6 +243,7 @@ public class MainActivity extends ActionBarActivity {
         }
     }
     private void showDealerHand(boolean hidden) { //checks to see if one card should be hidden
+        dealer_row.removeAllViews();
         if (!hidden) {
             for (int k : dealerHand) {
                 if (k != 0) //make sure its an initialized variable. no card will ever be 0
