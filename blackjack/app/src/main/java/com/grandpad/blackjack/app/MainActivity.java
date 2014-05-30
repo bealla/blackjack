@@ -139,6 +139,10 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//plus 5
             case FIRSTCHOICE://stop and set screen to game over
+                setResultScreen();
+                break;
+            case HIT:
+                setResultScreen();
                 break;
         }
     }
@@ -498,6 +502,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setResultScreen() {
+
+        //todo: slowly flip dealer cards
+        //todo: show win/lose and offer next game
         btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
         btn_hit.setVisibility(View.INVISIBLE);
