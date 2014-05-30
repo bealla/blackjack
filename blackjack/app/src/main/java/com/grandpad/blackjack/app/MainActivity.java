@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -36,6 +37,9 @@ public class MainActivity extends ActionBarActivity {
 
     TextView tv_text_bank;
     TextView tv_text_bet;
+
+    TableRow player_row;
+    TableRow dealer_row;
     //card arrays
     int[] deck = new int[53];
     int[] dealer_hand = new int[10];
@@ -72,6 +76,9 @@ public class MainActivity extends ActionBarActivity {
         tv_text_bank.setText(String.valueOf(chips));
         currentBet = 0;
         tv_text_bet.setText(String.valueOf(currentBet));
+
+        player_row = (TableRow) findViewById(R.id.player_row);
+        dealer_row = (TableRow) findViewById(R.id.dealer_row);
 
         setBetScreen();
         //setFirstChoice();
@@ -217,7 +224,197 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void showPlayerHand() {
+
         //TODO: make this do stuff
+        for (int k : player_hand) {
+            if (k != 0) //make sure its an initialized variable. no card will ever be 0
+            {
+                ImageView view = new ImageView(MainActivity.this);
+                view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
+                player_row.addView(view, 100, 150);
+            }
+        }
+    }
+
+    private int getImageID(suit cardSuit, int cardNum) {
+        int imageID = -1;
+        switch (cardSuit) {
+            case Spade:
+                switch (cardNum) {
+                    case 1:
+                        imageID = R.drawable.card_spade_01;
+                        break;
+                    case 2:
+                        imageID = R.drawable.card_spade_02;
+                        break;
+                    case 3:
+                        imageID = R.drawable.card_spade_03;
+                        break;
+                    case 4:
+                        imageID = R.drawable.card_spade_04;
+                        break;
+                    case 5:
+                        imageID = R.drawable.card_spade_05;
+                        break;
+                    case 6:
+                        imageID = R.drawable.card_spade_06;
+                        break;
+                    case 7:
+                        imageID = R.drawable.card_spade_07;
+                        break;
+                    case 8:
+                        imageID = R.drawable.card_spade_08;
+                        break;
+                    case 9:
+                        imageID = R.drawable.card_spade_09;
+                        break;
+                    case 10:
+                        imageID = R.drawable.card_spade_10;
+                        break;
+                    case 11:
+                        imageID = R.drawable.card_spade_11;
+                        break;
+                    case 12:
+                        imageID = R.drawable.card_spade_12;
+                        break;
+                    case 13:
+                        imageID = R.drawable.card_spade_13;
+                        break;
+                }
+                break;
+            case Heart:
+                switch (cardNum) {
+                    case 1:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 2:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 3:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 4:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 5:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 6:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 7:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 8:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 9:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 10:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 11:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 12:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                    case 13:
+                        imageID = R.drawable.card_heart_01;
+                        break;
+                }
+                break;
+
+            case Diamond:
+                switch (cardNum) {
+                    case 1:
+                        imageID = R.drawable.card_diamond_01;
+                        break;
+                    case 2:
+                        imageID = R.drawable.card_diamond_02;
+                        break;
+                    case 3:
+                        imageID = R.drawable.card_diamond_03;
+                        break;
+                    case 4:
+                        imageID = R.drawable.card_diamond_04;
+                        break;
+                    case 5:
+                        imageID = R.drawable.card_diamond_05;
+                        break;
+                    case 6:
+                        imageID = R.drawable.card_diamond_06;
+                        break;
+                    case 7:
+                        imageID = R.drawable.card_diamond_07;
+                        break;
+                    case 8:
+                        imageID = R.drawable.card_diamond_08;
+                        break;
+                    case 9:
+                        imageID = R.drawable.card_diamond_09;
+                        break;
+                    case 10:
+                        imageID = R.drawable.card_diamond_10;
+                        break;
+                    case 11:
+                        imageID = R.drawable.card_diamond_11;
+                        break;
+                    case 12:
+                        imageID = R.drawable.card_diamond_12;
+                        break;
+                    case 13:
+                        imageID = R.drawable.card_diamond_13;
+                        break;
+                }
+                break;
+
+            case Club:
+                switch (cardNum) {
+                    case 1:
+                        imageID = R.drawable.card_club_01;
+                        break;
+                    case 2:
+                        imageID = R.drawable.card_club_02;
+                        break;
+                    case 3:
+                        imageID = R.drawable.card_club_03;
+                        break;
+                    case 4:
+                        imageID = R.drawable.card_club_04;
+                        break;
+                    case 5:
+                        imageID = R.drawable.card_club_05;
+                        break;
+                    case 6:
+                        imageID = R.drawable.card_club_06;
+                        break;
+                    case 7:
+                        imageID = R.drawable.card_club_07;
+                        break;
+                    case 8:
+                        imageID = R.drawable.card_club_08;
+                        break;
+                    case 9:
+                        imageID = R.drawable.card_club_09;
+                        break;
+                    case 10:
+                        imageID = R.drawable.card_club_10;
+                        break;
+                    case 11:
+                        imageID = R.drawable.card_club_11;
+                        break;
+                    case 12:
+                        imageID = R.drawable.card_club_12;
+                        break;
+                    case 13:
+                        imageID = R.drawable.card_club_13;
+                        break;
+                }
+                break;
+        }
+        return imageID;
     }
 
     private void showDealerHand() {
@@ -269,7 +466,18 @@ public class MainActivity extends ActionBarActivity {
         return value;
     }
 
-    public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
+    public suit getSuit(int cardNum) {
+        suit cardSuit;
+        if (cardNum <= 13)
+            cardSuit = suit.Spade;
+        else if (cardNum <= 26)
+            cardSuit = suit.Heart;
+        else if (cardNum <= 39)
+            cardSuit = suit.Diamond;
+        else
+            cardSuit = suit.Club;
+        return cardSuit;
+    }
 
     private void setResultScreen() {
         btn_split.setVisibility(View.INVISIBLE);
@@ -281,5 +489,9 @@ public class MainActivity extends ActionBarActivity {
 
         //TODO: show who wins
     }
+
+    public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
+
+    public enum suit {Spade, Heart, Diamond, Club}
 
 }
