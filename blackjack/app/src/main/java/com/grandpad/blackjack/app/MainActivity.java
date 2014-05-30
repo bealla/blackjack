@@ -518,8 +518,8 @@ public class MainActivity extends ActionBarActivity {
 
         //todo: slowly flip dealer cards
         //todo: show win/lose and offer next game
-        while (checkBust(dealerHand, true)) {
-
+        while (!checkBust(dealerHand, true)) {
+            dealerHand.add(getNextCard());
         }
         btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
