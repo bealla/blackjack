@@ -87,6 +87,7 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//subtract 1
             case FIRSTCHOICE:
+
                 break;//splits
         }
     }
@@ -101,6 +102,10 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//minus 5
             case FIRSTCHOICE://set double down and goto game over
+                currentBet = currentBet * 2;
+                tv_text_bet.setText(String.valueOf(currentBet));
+                player_hand[2] = getNextCard();
+                setResultScreen();
                 break;
         }
 
@@ -149,7 +154,6 @@ public class MainActivity extends ActionBarActivity {
 
     public void setBetScreen() {
         currentScreen = screens.BET;
-        img_deck.setVisibility(View.INVISIBLE);
         btn_minus_one.setBackgroundResource(R.drawable.penny);
         btn_plus_one.setBackgroundResource(R.drawable.penny);
         btn_minus_five.setBackgroundResource(R.drawable.nickel);
@@ -220,6 +224,7 @@ public class MainActivity extends ActionBarActivity {
         //TODO: make this do stuff
     }
 
+
     /*
     enum suit
     select case 1-4
@@ -243,6 +248,38 @@ public class MainActivity extends ActionBarActivity {
         tv_text_bet.setText(String.valueOf(currentBet));
     }
 
+    //divides by 13 then returns remainder
+    public int calculateNum(int cardNum) {
+        int num = cardNum % 13;
+        if (num == 0)
+            num = 13;
+        return num;
+    }
+
+    public int calculateValue(int cardNum) {
+
+        //todo: add case for Ace = 1
+        int value = -1;
+        if (cardNum > 9)
+            value = 10;
+        else if (cardNum > 1)
+            value = cardNum;
+        else if (cardNum == 1)
+            value = 13;
+        return value;
+    }
+
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
+
+    private void setResultScreen() {
+        btn_split.setVisibility(View.INVISIBLE);
+        btn_double.setVisibility(View.INVISIBLE);
+        btn_hit.setVisibility(View.INVISIBLE);
+        btn_stand.setVisibility(View.INVISIBLE);
+        btn_hit.setVisibility(View.INVISIBLE);
+        btn_cancel_bet.setVisibility(View.INVISIBLE);
+
+        //TODO: show who wins
+    }
 
 }
