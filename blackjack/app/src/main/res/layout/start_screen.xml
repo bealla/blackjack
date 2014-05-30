@@ -1,9 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:layout_gravity="top"
-    android:background="@android:color/background_dark">
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    android:gravity="left"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:baselineAligned="false">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|left"
+        android:layout_weight="0"
+        android:background="#FFFFFF">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:minHeight="135dp"></TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:minHeight="150dp">
+
+            <Button
+                android:id="@+id/start_btn"
+                android:layout_width="250dp"
+                android:layout_height="130dp"
+                android:enabled="true"
+
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:text="Start New Game"
+                android:onClick="toMainActivity"
+                />
+
+            <Button
+                android:id="@+id/howTo_btn"
+                android:layout_width="250dp"
+                android:layout_height="130dp"
+                android:enabled="true"
+
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:text="How To Play"
+                />
+
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>
