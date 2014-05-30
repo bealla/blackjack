@@ -87,7 +87,6 @@ public class MainActivity extends ActionBarActivity {
         //setHitScreen();
     }
 
-    //TODO: stop bet from exceeding current chips
     public void split(View v) {
         switch (currentScreen) {
             case BET:
@@ -122,6 +121,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    // stop bet from exceeding current chips
     public void hit(View v) {
         switch (currentScreen) {
             case BET:
@@ -185,7 +185,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void notEnoughChips() {
-        //TODO: popup not enough chips
+        // popup not enough chips
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage(R.string.not_enough_chips);
         builder.setTitle(R.string.cant_bet);
@@ -239,6 +239,10 @@ public class MainActivity extends ActionBarActivity {
         playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
 
+        if (calculateValue(playerHand.get(0)) == calculateValue(playerHand.get(1)))
+            btn_split.setActivated(true);
+        else
+            btn_split.setActivated(false);
         //display hands
         showPlayerHand();
         showDealerHand(true);
