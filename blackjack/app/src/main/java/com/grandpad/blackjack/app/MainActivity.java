@@ -117,7 +117,7 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//minus 5
             case FIRSTCHOICE://set double down and goto game over
-                //todo: make sure doesn't exceed chips available
+                // make sure doesn't exceed chips available
                 if (chips >= currentBet * 2) {
                     currentBet = currentBet * 2;
                     playerHand.add(getNextCard());
@@ -586,7 +586,6 @@ public class MainActivity extends ActionBarActivity {
         btn_cancel_bet.setVisibility(View.GONE);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        settings.edit().putInt("chips", chips).commit();
 
         //check who wins
         int playerValue = -1;
@@ -626,6 +625,7 @@ public class MainActivity extends ActionBarActivity {
         ll_rightColumn.addView(winnerText);
         ll_rightColumn.addView(myButton, 175, 100);
 
+        settings.edit().putInt("chips", chips).commit();
     }
 
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
