@@ -61,6 +61,9 @@ public class MainActivity extends ActionBarActivity {
         //TODO: what if at 0 chips? results screen with New Game button.
         //TODO: popup "here's 1000 to start with"
 
+        if (chips == 0)
+            chips = 1000;
+        //have some new chips
         btn_split = (Button) findViewById(R.id.btn_split);
         btn_double = (Button) findViewById(R.id.btn_double);
         btn_hit = (Button) findViewById(R.id.btn_hit);
@@ -114,12 +117,17 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//minus 5
             case FIRSTCHOICE://set double down and goto game over
+<<<<<<< HEAD
                 currentBet = currentBet * 2;
                 //make sure doesn't exceed chips available, if so return to firstChoice screen
+=======
+                //todo: make sure doesn't exceed chips available
+>>>>>>> FETCH_HEAD
                 if (chips >= currentBet * 2) {
                     currentBet = currentBet *2;
                     playerHand.add(getNextCard());
                     updateBet();
+<<<<<<< HEAD
                     showPlayerHand();
                     setResultScreen();
 
@@ -128,6 +136,14 @@ public class MainActivity extends ActionBarActivity {
                 tv_text_bet.setText(String.valueOf(currentBet));
 
                 setFirstChoice();
+=======
+                    tv_text_bet.setText(String.valueOf(currentBet));
+                    playerHand.add(getNextCard());
+                    showPlayerHand();
+                    setResultScreen();
+                } else
+                    notEnoughChips();
+>>>>>>> FETCH_HEAD
                 break;
         }
 

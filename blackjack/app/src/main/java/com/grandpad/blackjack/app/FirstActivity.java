@@ -23,4 +23,10 @@ public class FirstActivity extends Activity {
         Intent intent = new Intent(FirstActivity.this, MainActivity.class);
         startActivity(intent);
     }
+    public void toInstructionActivity(View view) {
+        //on start new button click go to main activity
+
+        Intent intent = new Intent(FirstActivity.this, InstructionActivity.class);
+        startActivity(intent);
+    }
 }
