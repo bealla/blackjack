@@ -321,40 +321,40 @@ public class MainActivity extends ActionBarActivity {
                         imageID = R.drawable.card_heart_01;
                         break;
                     case 2:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_02;
                         break;
                     case 3:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_03;
                         break;
                     case 4:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_04;
                         break;
                     case 5:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_05;
                         break;
                     case 6:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_06;
                         break;
                     case 7:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_07;
                         break;
                     case 8:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_08;
                         break;
                     case 9:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_09;
                         break;
                     case 10:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_10;
                         break;
                     case 11:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_11;
                         break;
                     case 12:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_12;
                         break;
                     case 13:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_13;
                         break;
                 }
                 break;
@@ -521,6 +521,7 @@ public class MainActivity extends ActionBarActivity {
         while (!checkBust(dealerHand, true)) {
             dealerHand.add(getNextCard());
         }
+        showDealerHand(false);
         btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
         btn_hit.setVisibility(View.INVISIBLE);
