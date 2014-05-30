@@ -30,6 +30,8 @@
             android:id="@+id/middle_row">
 
 
+
+
         </TableRow>
 
         <TableRow
@@ -94,6 +96,16 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tv_label_subtract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:text="Subtract"
+                    android:visibility="invisible"/>
+
+
+
                 <Button
                     android:id="@+id/btn_split"
                     android:layout_width="90dp"
@@ -117,6 +129,14 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+
+                <TextView
+                    android:id="@+id/tv_label_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:text="Add"
+                    android:visibility="invisible"/>
                 <Button
                     android:id="@+id/btn_hit"
                     android:layout_width="90dp"
