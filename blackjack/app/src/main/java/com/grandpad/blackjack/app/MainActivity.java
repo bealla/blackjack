@@ -124,10 +124,14 @@ public class MainActivity extends ActionBarActivity {
                 playerHand.add(getNextCard());
                 setHitScreen();
                 showPlayerHand();
+                if (checkBust(playerHand, false))
+                    setResultScreen();
                 break;
-            case HIT://TODO:need to check for bust
+            case HIT:
                 playerHand.add(getNextCard()); //gets a card
                 showPlayerHand();
+                if (checkBust(playerHand, false))
+                    setResultScreen();
                 break;
         }
     }
@@ -446,16 +450,6 @@ public class MainActivity extends ActionBarActivity {
         return imageID;
     }
 
-
-
-    /*
-    enum suit
-    select case 1-4
-    enum rank
-    mod?
-    select case
-     */
-
     private void setHitScreen() {
         //TODO: fill in
         currentScreen = screens.HIT;
@@ -475,7 +469,7 @@ public class MainActivity extends ActionBarActivity {
         return num;
     }
 
-    public int calculateValue(int cardNum) {
+    public int calculateValue(int cardNum) { //make sure you calculateNum first
 
         //todo: add case for Ace = 1
         int value = -1;
@@ -501,10 +495,32 @@ public class MainActivity extends ActionBarActivity {
         return cardSuit;
     }
 
+    private boolean checkBust(ArrayList<Integer> cardList, boolean dealer) {
+        boolean bust = false;
+        int totalValue = 0;
+        if (dealer) {
+            for (int card : cardList) {
+                totalValue += calculateValue(calculateNum(card));
+            }
+            if (totalValue > 16)
+                bust = true;
+        } else {
+            for (int card : cardList) {
+                totalValue += calculateValue(calculateNum(card));
+            }
+            if (totalValue > 21)
+                bust = true;
+        }
+        return bust;
+    }
+
     private void setResultScreen() {
 
         //todo: slowly flip dealer cards
         //todo: show win/lose and offer next game
+        while (checkBust(dealerHand, true)) {
+
+        }
         btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
         btn_hit.setVisibility(View.INVISIBLE);
@@ -512,7 +528,8 @@ public class MainActivity extends ActionBarActivity {
         btn_hit.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
 
-        //TODO: show who wins
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        settings.edit().putInt("chips", chips);
     }
 
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
