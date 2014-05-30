@@ -6,5 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="dialog_title">Game Over!</string>
     <string name="ok">OK</string>
+    <string name="not_enough_chips">Not Enough Chips!</string>
+    <string name="cant_bet">Can't Make Bet</string>
 
 </resources>

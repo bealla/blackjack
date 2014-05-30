@@ -1,5 +1,7 @@
 package com.grandpad.blackjack.app;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -123,8 +125,11 @@ public class MainActivity extends ActionBarActivity {
     public void hit(View v) {
         switch (currentScreen) {
             case BET:
-                currentBet++;
-                updateBet();
+                if (chips > currentBet) {
+                    currentBet++;
+                    updateBet();
+                } else
+                    notEnoughChips();
                 break;//plus 1
             case FIRSTCHOICE://hits then set screen to hit
                 playerHand.add(getNextCard());
@@ -145,8 +150,11 @@ public class MainActivity extends ActionBarActivity {
     public void stand(View v) {
         switch (currentScreen) {
             case BET:
-                currentBet += 5;
-                updateBet();
+                if (chips >= currentBet + 5) {
+                    currentBet += 5;
+                    updateBet();
+                } else
+                    notEnoughChips();
                 break;//plus 5
             case FIRSTCHOICE://stop and set screen to game over
                 setResultScreen();
@@ -174,6 +182,21 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;
         }
+    }
+
+    private void notEnoughChips() {
+        //TODO: popup not enough chips
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage(R.string.not_enough_chips);
+        builder.setTitle(R.string.cant_bet);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog notEnoughChips = builder.create();
+        notEnoughChips.show();
     }
 
     public void setBetScreen() {
@@ -485,7 +508,7 @@ public class MainActivity extends ActionBarActivity {
         else if (cardNum > 1)
             value = cardNum;
         else if (cardNum == 1)
-            value = 13;
+            value = 11;
         return value;
     }
 
@@ -526,7 +549,7 @@ public class MainActivity extends ActionBarActivity {
     private void setResultScreen() {
 
         //todo: slowly flip dealer cards
-        //todo: show win/lose
+        //show win/lose
         while (!checkBust(dealerHand, true)) {
             dealerHand.add(getNextCard());
         }
@@ -541,14 +564,14 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         settings.edit().putInt("chips", chips).commit();
 
-        //TODO: check who wins
+        //check who wins
         int playerValue = -1;
         int dealerValue = -1;
         int winnings = currentBet;
         boolean playerWins = false;
-        if (checkBust(playerHand, false))
+        if (!checkBust(playerHand, false))
             playerValue = calculateTotalValue(playerHand);
-        if (checkBust(dealerHand, false))
+        if (!checkBust(dealerHand, false))
             dealerValue = calculateTotalValue(dealerHand);
 
         if (playerValue > dealerValue) {
@@ -557,14 +580,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         TextView winnerText = new TextView(this);
-        if (playerWins)
+        if (playerWins) {
             winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
-        else
+            chips = +winnings;
+        } else {
             winnerText.setText("Oh no, you lost: " + winnings + " chips.");
-        winnerText.setWidth(755);
-        winnerText.setHeight(50);
-        TableRow middle_row = (TableRow) findViewById(R.id.middle_row);
-        middle_row.addView(winnerText);
+        }
+        winnerText.setWidth(175);
+        winnerText.setHeight(100);
 
         Button myButton = new Button(this);
         myButton.setText("Next Round");
@@ -575,6 +598,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         LinearLayout ll_rightColumn = (LinearLayout) findViewById(R.id.ll_rightColumn);
+
+        ll_rightColumn.addView(winnerText);
         ll_rightColumn.addView(myButton, 175, 100);
 
     }
