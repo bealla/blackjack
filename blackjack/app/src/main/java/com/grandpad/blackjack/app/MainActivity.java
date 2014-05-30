@@ -108,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
         switch (currentScreen) {
             case BET:
                 if (currentBet > 5)
-                    currentBet--;
+                    currentBet -= 5;
                 else
                     currentBet = 0;
                 updateBet();
@@ -133,7 +133,7 @@ public class MainActivity extends ActionBarActivity {
     public void stand(View v) {
         switch (currentScreen) {
             case BET:
-                currentBet = +5;
+                currentBet += 5;
                 updateBet();
                 break;//plus 5
             case FIRSTCHOICE:
