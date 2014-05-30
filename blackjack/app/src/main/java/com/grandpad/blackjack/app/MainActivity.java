@@ -19,7 +19,6 @@ public class MainActivity extends ActionBarActivity {
 
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
 
-    ;
     //buttons on the right
     Button btn_split;
     Button btn_double;
@@ -144,6 +143,8 @@ public class MainActivity extends ActionBarActivity {
     public void bet(View v) {
         switch (currentScreen) {
             case BET://sets bet /goto firstchoice
+                chips -= currentBet;
+                tv_text_bank.setText(String.valueOf(chips));
                 setFirstChoice();
                 break;
         }
