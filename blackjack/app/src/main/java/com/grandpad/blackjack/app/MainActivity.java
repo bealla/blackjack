@@ -1,6 +1,8 @@
 package com.grandpad.blackjack.app;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -99,16 +101,27 @@ public class MainActivity extends ActionBarActivity {
                 break;//splits
         }
     }
-    private void cantbetDialouge(View v){
 
-        AlertDialog.Builder builder = new Builder(getContext());
-        builder.setTitle("Warning").setMessage(str_mesg);
-        builder.setPositiveButton("Okay",new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface di,int i) {
 
-            }
-        });
-    }
+        public void cantBet(View view) {
+            //dialouge pop up notifiying can't double down
+
+
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Double Down");
+            alertDialog.setMessage("Cannot place bet, insufficient chips");
+
+            alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    //
+                }
+            });
+
+            alertDialog.show();
+        }
+
+
+
     public void doubleHand(View v) {
         switch (currentScreen) {
             case BET:
@@ -122,7 +135,19 @@ public class MainActivity extends ActionBarActivity {
                 if (currentBet * 2 < currentBet){
                     currentBet = currentBet * 2;
                 }
-                else{ currentBet = currentBet * 1
+                else {
+                    currentBet = currentBet * 1;
+                    AlertDialog alertDialog = new AlertDialog.Builder.(MainActivity.this).create();
+                    alertDialog.setTitle("DoubleDown");
+                    alertDialog.setMessage("Cannot doubedown, insufficient chips");
+                    alertDialog.setButton("Continue...", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //
+                                }});
+
+
+                                alertDialog.show();
+                }
 
 
 
@@ -132,7 +157,13 @@ public class MainActivity extends ActionBarActivity {
                     showPlayerHand();
                     setResultScreen();
                     break;
-                }
+            case HIT:
+                break;
+            case DOUBLEDOWN:
+                break;
+            case GAMEOVER:
+                break;
+        }
 
         }
 
