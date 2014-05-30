@@ -605,7 +605,7 @@ public class MainActivity extends ActionBarActivity {
         TextView winnerText = new TextView(this);
         if (playerWins) {
             winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
-            chips = +winnings;
+            chips += winnings;
         } else {
             winnerText.setText("Oh no, you lost: " + winnings + " chips.");
         }
