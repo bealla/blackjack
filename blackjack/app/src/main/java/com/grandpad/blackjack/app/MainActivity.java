@@ -97,6 +97,7 @@ public class MainActivity extends ActionBarActivity {
             case BET:
                 if (currentBet >= 1)
                     currentBet--;
+                updateBet();
                 break;//subtract 1
             case FIRSTCHOICE:
                 break;//splits
@@ -110,6 +111,7 @@ public class MainActivity extends ActionBarActivity {
                     currentBet--;
                 else
                     currentBet = 0;
+                updateBet();
                 break;//minus 5
             case FIRSTCHOICE:
                 break; //set double down and goto game over
@@ -121,6 +123,7 @@ public class MainActivity extends ActionBarActivity {
         switch (currentScreen) {
             case BET:
                 currentBet++;
+                updateBet();
                 break;//plus 1
             case FIRSTCHOICE:
                 break; //hits then set screen to hit
@@ -131,6 +134,7 @@ public class MainActivity extends ActionBarActivity {
         switch (currentScreen) {
             case BET:
                 currentBet = +5;
+                updateBet();
                 break;//plus 5
             case FIRSTCHOICE:
                 break; //stop and set screen to game over
@@ -149,6 +153,7 @@ public class MainActivity extends ActionBarActivity {
         switch (currentScreen) {
             case BET:
                 currentBet = 0;
+                updateBet();
                 break;//setbet to 0 and continue
         }
     }
@@ -206,6 +211,9 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    public void updateBet() {
+        tv_text_bet.setText(String.valueOf(currentBet));
+    }
 
 //    public void splitCommands(View view) {
 //        // If split is clicked hide all buttons besides hit and stand
