@@ -175,6 +175,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setFirstChoice() {
+
+        //todo: check for splitting as an option. only show if possible
         currentScreen = screens.FIRSTCHOICE;
         btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
@@ -233,7 +235,7 @@ public class MainActivity extends ActionBarActivity {
             {
                 ImageView view = new ImageView(MainActivity.this);
                 view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
-                player_row.addView(view, 100, 150);
+                player_row.addView(view, 100, 175);
             }
         }
     }
@@ -245,7 +247,7 @@ public class MainActivity extends ActionBarActivity {
                 {
                     ImageView view = new ImageView(MainActivity.this);
                     view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
-                    dealer_row.addView(view, 100, 150);
+                    dealer_row.addView(view, 100, 175);
                 }
             }
         } else {
