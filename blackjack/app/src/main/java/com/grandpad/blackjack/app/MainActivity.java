@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -16,9 +18,7 @@ public class MainActivity extends ActionBarActivity {
     int chips;
     int currentBet;
     screens currentScreen;
-
-    public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
-
+    Random nextCard = new Random();
     //buttons on the right
     Button btn_split;
     Button btn_double;
@@ -33,10 +33,9 @@ public class MainActivity extends ActionBarActivity {
     Button btn_bet;
     Button btn_cancel_bet;
     ImageView img_deck;
-//    TextView tv_text_lefthand; TODO: add splitting
-
     //cards
     ImageView img_dealer_revealed;
+    //    TextView tv_text_lefthand; TODO: add splitting
     ImageView img_dealer_hidden;
     ImageView img_player_1;
     ImageView img_player_2;
@@ -174,7 +173,6 @@ public class MainActivity extends ActionBarActivity {
         btn_plus_one.setTextColor(Color.TRANSPARENT);
         btn_minus_five.setTextColor(Color.TRANSPARENT);
         btn_plus_five.setTextColor(Color.TRANSPARENT);
-
     }
 
     private void setFirstChoice() {
@@ -192,7 +190,62 @@ public class MainActivity extends ActionBarActivity {
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
 
+        //reset hand
+        dealer_hand = new int[10];
+        player_hand = new int[10];
+
+        //create starting hands
+        player_hand[0] = getNextCard();
+        dealer_hand[0] = getNextCard();
+        player_hand[1] = getNextCard();
+        dealer_hand[1] = getNextCard();
+
+        //TODO: display hands
+        showPlayerHand();
+        showDealerHand();
     }
+
+    private int getNextCard() {
+        int i = -1;
+        i = nextCard.nextInt(53);
+        if (!checkAlreadyUsed(i)) {
+        } else {
+            i = getNextCard();
+        }
+        return i;
+    }
+
+    private boolean checkAlreadyUsed(int i) {
+        boolean used = false;
+        for (int k : deck) {
+            if (k == i)
+                used = true;
+        }
+        return used;
+    }
+
+    private void showPlayerHand() {
+        //TODO: make this do stuff
+        int imgRes;
+        for (int k : player_hand) {
+            if (k == 0)
+                break;
+            imgRes = player_hand[k];
+        }
+        img_player_1.setImageResource(R.drawable.card_club_01);
+    }
+
+    private void showDealerHand() {
+        //TODO: make this do stuff
+    }
+
+    /*
+    enum suit
+    select case 1-4
+    enum rank
+    mod?
+    select case
+     */
 
     private void setHitScreen() {
         //TODO: fill in
@@ -203,11 +256,12 @@ public class MainActivity extends ActionBarActivity {
         btn_plus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
-
     }
 
     public void updateBet() {
         tv_text_bet.setText(String.valueOf(currentBet));
     }
+
+    public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
 
 }
