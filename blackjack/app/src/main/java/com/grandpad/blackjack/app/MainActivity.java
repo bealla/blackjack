@@ -126,8 +126,13 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//plus 1
             case FIRSTCHOICE://hits then set screen to hit
-                currentScreen = screens.HIT;
                 playerHand.add(getNextCard());
+                setHitScreen();
+                showPlayerHand();
+                break;
+            case HIT://TODO:need to check for bust
+                playerHand.add(getNextCard()); //gets a card
+                showPlayerHand();
                 break;
         }
     }
@@ -451,12 +456,7 @@ public class MainActivity extends ActionBarActivity {
     private void setHitScreen() {
         //TODO: fill in
         currentScreen = screens.HIT;
-        btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_minus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_plus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_bet.setVisibility(View.INVISIBLE);
-        btn_cancel_bet.setVisibility(View.INVISIBLE);
+
     }
 
     public void updateBet() {
