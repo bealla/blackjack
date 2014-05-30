@@ -43,8 +43,7 @@ public class InstructionActivity extends FirstActivity {
         Button btn_double = (Button) findViewById(R.id.btn_double);
         btn_double.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //Intent myIntent = new Intent(view.getContext(), agones.class);
-                //startActivityForResult(myIntent, 0);
+                //
 
 
                 AlertDialog alertDialog = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
@@ -53,11 +52,11 @@ public class InstructionActivity extends FirstActivity {
 
                 alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // here you can add functions
+                        //
                     }
                 });
 
-                alertDialog.show();  //<-- See This!
+                alertDialog.show();
             }
         });
         Button btn_split = (Button) findViewById(R.id.btn_split);
@@ -71,10 +70,10 @@ public class InstructionActivity extends FirstActivity {
 
                 alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // here you can add functions
+                        //
                     }
                 });
-                alertDialog.show();  //<-- See This!
+                alertDialog.show();
 
             }
         });
@@ -91,11 +90,11 @@ public class InstructionActivity extends FirstActivity {
 
                 alertDialog1.setButton("Continue..", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // here you can add functions
+                        //
                     }
                 });
 
-                alertDialog1.show();  //<-- See This!
+                alertDialog1.show();
 
             }
         });
@@ -109,15 +108,127 @@ public class InstructionActivity extends FirstActivity {
 
                 AlertDialog alertDialog2 = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
                 alertDialog2.setTitle("Stand");
-                alertDialog2.setMessage("When you're satisfied with the value of your hand tap stand to reveal the dealer's hand");
+                alertDialog2.setMessage("Tap Stand to complete your round and reveal the dealer's hand");
 
                 alertDialog2.setButton("Continue..", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // here you can add functions
+                        //
                     }
                 });
 
-                alertDialog2.show();  //<-- See This!
+                alertDialog2.show();
+
+
+            }
+        });
+
+        Button btn_bet = (Button) findViewById(R.id.btn_bet);
+        btn_bet.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick(View view) {
+
+
+                AlertDialog alertDialog2 = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
+                alertDialog2.setTitle("Bet");
+                alertDialog2.setMessage("Submit the amount of money you want to bet ");
+
+                alertDialog2.setButton("Continue..", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                    }
+                });
+
+                alertDialog2.show();
+
+
+            }
+        });
+
+        Button btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
+        btn_cancel_bet.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick(View view) {
+
+
+                AlertDialog alertDialog2 = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
+                alertDialog2.setTitle("Cancel Bet");
+                alertDialog2.setMessage("Cancel the current amount of money you want to bet ");
+
+                alertDialog2.setButton("Continue..", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                    }
+                });
+
+                alertDialog2.show();
+
+
+            }
+        });
+
+        arrow.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick(View view) {
+
+
+                AlertDialog alertDialog2 = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
+                alertDialog2.setTitle("Dealer's Hand");
+                alertDialog2.setMessage("This is the dealer's hand and game deck ");
+
+                alertDialog2.setButton("Continue..", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                    }
+                });
+
+                alertDialog2.show();
+
+
+            }
+        });
+
+        arrow2.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick(View view) {
+
+
+                AlertDialog alertDialog2 = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
+                alertDialog2.setTitle("Your hand");
+                alertDialog2.setMessage("This is your hand ");
+
+                alertDialog2.setButton("Continue..", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                    }
+                });
+
+                alertDialog2.show();
+
+
+            }
+        });
+
+        arrow3.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick(View view) {
+
+
+                AlertDialog alertDialog2 = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
+                alertDialog2.setTitle("Play Options");
+                alertDialog2.setMessage("These are each of your playing options;Tap each one to learn when to use them");
+
+                alertDialog2.setButton("Continue..", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                       //
+                    }
+                });
+
+                alertDialog2.show();
 
 
             }

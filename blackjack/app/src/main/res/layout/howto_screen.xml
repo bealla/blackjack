@@ -19,14 +19,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:minHeight="150dp">
-            <TextView
-                android:id="@+id/tv_text_dealerHand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_gravity="left|center"
-                android:text="Dealer's Hand and Deck"
-               />
+
 
             <ImageView
                 android:id="@+id/arrow"
@@ -85,7 +78,7 @@
 
 
             <Button
-                android:id="@+id/btn_6"
+                android:id="@+id/btn_4"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -94,7 +87,7 @@
                 android:textSize="50dp"
                 android:visibility="invisible"></Button>
             <Button
-                android:id="@+id/btn_7"
+                android:id="@+id/btn_5"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -103,8 +96,26 @@
                 android:textSize="50dp"
                 android:visibility="invisible"></Button>
             <Button
-                android:id="@+id/btn_8"
+                android:id="@+id/btn_6"
                 android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:enabled="true"
+                android:textColor="@android:color/white"
+                android:textSize="50dp"
+                android:visibility="invisible"></Button>
+            <Button
+                android:id="@+id/btn_7"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:enabled="true"
+                android:textColor="@android:color/white"
+                android:textSize="50dp"
+                android:visibility="invisible"></Button>
+            <Button
+                android:id="@+id/btn_8"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:enabled="true"
@@ -113,14 +124,7 @@
                 android:visibility="invisible"></Button>
 
 
-            <TextView
-                android:id="@+id/tv_text_playOptions"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:textSize="23dp"
-                android:layout_gravity="left|center"
-                android:text="Play Options"
-                />
+
             <ImageView
                 android:id="@+id/arrow3"
                 android:layout_gravity="right|center"
@@ -139,14 +143,7 @@
             android:gravity="center"
             android:minHeight="150dp">
 
-            <TextView
-                android:id="@+id/tv_text_deck"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="left|center"
-                android:textSize="23dp"
-                android:text="Your Hand"
-                />
+
             <ImageView
                 android:id="@+id/arrow2"
                 android:layout_gravity="center|left"
