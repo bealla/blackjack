@@ -190,13 +190,13 @@ public class MainActivity extends ActionBarActivity {
         btn_cancel_bet.setVisibility(View.INVISIBLE);
 
         //reset hand
-        playerhand = new ArrayList<Integer>();
+        playerHand = new ArrayList<Integer>();
         dealerHand = new ArrayList<Integer>();
 
         //create starting hands
-        playerhand.add(getNextCard());
+        playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
-        playerhand.add(getNextCard());
+        playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
 
         //TODO: display hands
