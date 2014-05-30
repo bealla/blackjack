@@ -91,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
         //setHitScreen();
     }
 
-    //TODO: button on_click listeners. Will check for current state. Logic will be based off current state
+    //TODO: stop bet from exceeding current chips
     public void split(View v) {
         switch (currentScreen) {
             case BET:
@@ -113,8 +113,8 @@ public class MainActivity extends ActionBarActivity {
                     currentBet = 0;
                 updateBet();
                 break;//minus 5
-            case FIRSTCHOICE:
-                break; //set double down and goto game over
+            case FIRSTCHOICE://set double down and goto game over
+                break;
         }
 
     }
@@ -125,8 +125,8 @@ public class MainActivity extends ActionBarActivity {
                 currentBet++;
                 updateBet();
                 break;//plus 1
-            case FIRSTCHOICE:
-                break; //hits then set screen to hit
+            case FIRSTCHOICE://hits then set screen to hit
+                break;
         }
     }
 
@@ -136,25 +136,25 @@ public class MainActivity extends ActionBarActivity {
                 currentBet += 5;
                 updateBet();
                 break;//plus 5
-            case FIRSTCHOICE:
-                break; //stop and set screen to game over
+            case FIRSTCHOICE://stop and set screen to game over
+                break;
         }
     }
 
     public void bet(View v) {
         switch (currentScreen) {
-            case BET:
+            case BET://sets bet /goto firstchoice
                 setFirstChoice();
-                break;//sets bet /goto firstchoice
+                break;
         }
     }
 
     public void cancelBet(View v) {
         switch (currentScreen) {
-            case BET:
+            case BET://setbet to 0 and continue
                 currentBet = 0;
                 updateBet();
-                break;//setbet to 0 and continue
+                break;
         }
     }
 
@@ -177,7 +177,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setFirstChoice() {
-        //TODO: fill in
         currentScreen = screens.FIRSTCHOICE;
         btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
@@ -189,6 +188,9 @@ public class MainActivity extends ActionBarActivity {
         btn_minus_five.setTextColor(Color.DKGRAY);
         btn_plus_five.setTextColor(Color.DKGRAY);
 
+        btn_bet.setVisibility(View.INVISIBLE);
+        btn_cancel_bet.setVisibility(View.INVISIBLE);
+
     }
 
     private void setHitScreen() {
@@ -198,33 +200,13 @@ public class MainActivity extends ActionBarActivity {
         btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_minus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_plus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-
-    }
-
-    public void hitCommands(View view) {
-        // If hit is clicked hide all buttons besides hit and stand
-        //TODO: add another card
-
-    }
-
-    public void doubledownCommands(View view) {
-        // If doubleDown is clicked hide all buttons besides next round (not made yet)
-        // TODO: double the bet and add last card
+        btn_bet.setVisibility(View.INVISIBLE);
+        btn_cancel_bet.setVisibility(View.INVISIBLE);
 
     }
 
     public void updateBet() {
         tv_text_bet.setText(String.valueOf(currentBet));
     }
-
-//    public void splitCommands(View view) {
-//        // If split is clicked hide all buttons besides hit and stand
-//        //and display which hand they're playing on
-//        // TO-DO double the bet and add another card
-//        btn_double.setVisibility(View.GONE);
-//        btn_split.setVisibility(View.GONE);
-//        btn_bet.setVisibility(View.GONE);
-//        tv_text_lefthand.setVisibility(View.VISIBLE);
-//    }
 
 }
