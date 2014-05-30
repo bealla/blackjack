@@ -144,7 +144,7 @@ public class MainActivity extends ActionBarActivity {
     public void bet(View v) {
         switch (currentScreen) {
             case BET:
-                currentScreen = screens.FIRSTCHOICE;
+                setFirstChoice();
                 break;//sets bet /goto firstchoice
         }
     }
@@ -178,6 +178,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void setFirstChoice() {
         //TODO: fill in
+        currentScreen = screens.FIRSTCHOICE;
         btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_minus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
@@ -192,6 +193,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void setHitScreen() {
         //TODO: fill in
+        currentScreen = screens.HIT;
         btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_minus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
