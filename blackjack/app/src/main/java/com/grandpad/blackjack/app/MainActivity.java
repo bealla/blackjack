@@ -117,33 +117,17 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//minus 5
             case FIRSTCHOICE://set double down and goto game over
-<<<<<<< HEAD
-                currentBet = currentBet * 2;
-                //make sure doesn't exceed chips available, if so return to firstChoice screen
-=======
                 //todo: make sure doesn't exceed chips available
->>>>>>> FETCH_HEAD
                 if (chips >= currentBet * 2) {
-                    currentBet = currentBet *2;
+                    currentBet = currentBet * 2;
                     playerHand.add(getNextCard());
                     updateBet();
-<<<<<<< HEAD
-                    showPlayerHand();
-                    setResultScreen();
-
-                } else
-                    notEnoughChips();
-                tv_text_bet.setText(String.valueOf(currentBet));
-
-                setFirstChoice();
-=======
                     tv_text_bet.setText(String.valueOf(currentBet));
                     playerHand.add(getNextCard());
                     showPlayerHand();
                     setResultScreen();
                 } else
                     notEnoughChips();
->>>>>>> FETCH_HEAD
                 break;
         }
 
@@ -230,7 +214,7 @@ public class MainActivity extends ActionBarActivity {
     public void setBetScreen() {
         currentScreen = screens.BET;
 
-       
+
         btn_minus_one.setBackgroundResource(R.drawable.penny);
         btn_plus_one.setBackgroundResource(R.drawable.penny);
         btn_minus_five.setBackgroundResource(R.drawable.nickel);
