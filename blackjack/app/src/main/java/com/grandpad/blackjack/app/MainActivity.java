@@ -1,5 +1,9 @@
 package com.grandpad.blackjack.app;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -532,6 +537,21 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         settings.edit().putInt("chips", chips).commit();
 
+        LinearLayout ll_wrapper = (LinearLayout) findViewById(R.id.ll_wrapper);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        int winnings = currentBet;//todo: wrap this in if/else for win/lose
+        String msg = "You bet: " + currentBet + "/nYou won: " + winnings; //todo: add if else for different messages
+        builder.setMessage("test")
+                .setTitle(R.string.dialog_title);
+
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog dialog = builder.create();
         //todo: popup showing who won and how much. How much is left. then go back to the other screen
     }
 
