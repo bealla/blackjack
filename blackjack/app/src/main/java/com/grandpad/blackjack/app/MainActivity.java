@@ -530,8 +530,9 @@ public class MainActivity extends ActionBarActivity {
         btn_cancel_bet.setVisibility(View.INVISIBLE);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        settings.edit().putInt("chips", chips);
-        settings.edit().commit();
+        settings.edit().putInt("chips", chips).commit();
+
+        //todo: popup showing who won and how much. How much is left. then go back to the other screen
     }
 
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
