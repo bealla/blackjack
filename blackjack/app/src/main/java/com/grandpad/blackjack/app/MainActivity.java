@@ -33,12 +33,7 @@ public class MainActivity extends ActionBarActivity {
     Button btn_bet;
     Button btn_cancel_bet;
     ImageView img_deck;
-    //cards
-    ImageView img_dealer_revealed;
-    //    TextView tv_text_lefthand; TODO: add splitting
-    ImageView img_dealer_hidden;
-    ImageView img_player_1;
-    ImageView img_player_2;
+
     TextView tv_text_bank;
     TextView tv_text_bet;
     //card arrays
@@ -70,12 +65,6 @@ public class MainActivity extends ActionBarActivity {
 
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
-
-        img_deck = (ImageView) findViewById(R.id.img_deck);
-        img_dealer_revealed = (ImageView) findViewById(R.id.img_dealer_revealed);
-        img_dealer_hidden = (ImageView) findViewById(R.id.img_dealer_hidden);
-        img_player_1 = (ImageView) findViewById(R.id.img_player_1);
-        img_player_2 = (ImageView) findViewById(R.id.img_player_2);
 
         tv_text_bank = (TextView) findViewById(R.id.tv_text_bank);
         tv_text_bet = (TextView) findViewById(R.id.tv_text_bet);
@@ -161,10 +150,6 @@ public class MainActivity extends ActionBarActivity {
     public void setBetScreen() {
         currentScreen = screens.BET;
         img_deck.setVisibility(View.INVISIBLE);
-        img_dealer_revealed.setVisibility(View.INVISIBLE);
-        img_dealer_hidden.setVisibility(View.INVISIBLE);
-        img_player_1.setVisibility(View.INVISIBLE);
-        img_player_2.setVisibility(View.INVISIBLE);
         btn_minus_one.setBackgroundResource(R.drawable.penny);
         btn_plus_one.setBackgroundResource(R.drawable.penny);
         btn_minus_five.setBackgroundResource(R.drawable.nickel);
