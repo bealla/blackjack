@@ -54,6 +54,8 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         chips = settings.getInt("chips", 1000); //get saved chips. if non-existent set to 1000
+        //TODO: what if at 0 chips? results screen with New Game button.
+        //TODO: popup "here's 1000 to start with"
 
         btn_split = (Button) findViewById(R.id.btn_split);
         btn_double = (Button) findViewById(R.id.btn_double);
@@ -108,8 +110,10 @@ public class MainActivity extends ActionBarActivity {
                 break;//minus 5
             case FIRSTCHOICE://set double down and goto game over
                 currentBet = currentBet * 2;
+                //todo: make sure doesn't exceed chips available
                 tv_text_bet.setText(String.valueOf(currentBet));
                 playerHand.add(getNextCard());
+                showPlayerHand();
                 setResultScreen();
                 break;
         }
@@ -174,6 +178,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void setBetScreen() {
         currentScreen = screens.BET;
+        //todo: make add and subtract clear
         btn_minus_one.setBackgroundResource(R.drawable.penny);
         btn_plus_one.setBackgroundResource(R.drawable.penny);
         btn_minus_five.setBackgroundResource(R.drawable.nickel);
@@ -211,7 +216,7 @@ public class MainActivity extends ActionBarActivity {
         playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
 
-        //TODO: display hands
+        //display hands
         showPlayerHand();
         showDealerHand(true);
     }
@@ -454,7 +459,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setHitScreen() {
-        //TODO: fill in
         currentScreen = screens.HIT;
         btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
@@ -498,19 +502,21 @@ public class MainActivity extends ActionBarActivity {
         return cardSuit;
     }
 
+    private int calculateTotalValue(ArrayList<Integer> cardList) {
+        int totalValue = 0;
+        for (int card : cardList) {
+            totalValue += calculateValue(calculateNum(card));
+        }
+        return totalValue;
+    }
+
     private boolean checkBust(ArrayList<Integer> cardList, boolean dealer) {
         boolean bust = false;
-        int totalValue = 0;
+        int totalValue = calculateTotalValue(cardList);
         if (dealer) {
-            for (int card : cardList) {
-                totalValue += calculateValue(calculateNum(card));
-            }
             if (totalValue > 16)
                 bust = true;
         } else {
-            for (int card : cardList) {
-                totalValue += calculateValue(calculateNum(card));
-            }
             if (totalValue > 21)
                 bust = true;
         }
@@ -520,7 +526,7 @@ public class MainActivity extends ActionBarActivity {
     private void setResultScreen() {
 
         //todo: slowly flip dealer cards
-        //todo: show win/lose and offer next game
+        //todo: show win/lose
         while (!checkBust(dealerHand, true)) {
             dealerHand.add(getNextCard());
         }
@@ -535,9 +541,31 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         settings.edit().putInt("chips", chips).commit();
 
-        int winnings = currentBet;//todo: wrap this in if/else for win/lose
+        //TODO: check who wins
+        int playerValue = -1;
+        int dealerValue = -1;
+        int winnings = currentBet;
+        boolean playerWins = false;
+        if (checkBust(playerHand, false))
+            playerValue = calculateTotalValue(playerHand);
+        if (checkBust(dealerHand, false))
+            dealerValue = calculateTotalValue(dealerHand);
 
-        //todo: popup showing who won and how much. How much is left. then go back to the other screen
+        if (playerValue > dealerValue) {
+            winnings = currentBet * 2;
+            playerWins = true;
+        }
+
+        TextView winnerText = new TextView(this);
+        if (playerWins)
+            winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+        else
+            winnerText.setText("Oh no, you lost: " + winnings + " chips.");
+        winnerText.setWidth(755);
+        winnerText.setHeight(50);
+        TableRow middle_row = (TableRow) findViewById(R.id.middle_row);
+        middle_row.addView(winnerText);
+
         Button myButton = new Button(this);
         myButton.setText("Next Round");
         myButton.setOnClickListener(new View.OnClickListener() {
