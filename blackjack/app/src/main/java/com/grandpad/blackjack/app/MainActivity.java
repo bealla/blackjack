@@ -84,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
 
         tv_text_bank.setText(String.valueOf(chips));
         currentBet = 0;
-        tv_text_bet.setText(currentBet);
+        tv_text_bet.setText(String.valueOf(currentBet));
 
         setBetScreen();
         //setFirstChoice();
