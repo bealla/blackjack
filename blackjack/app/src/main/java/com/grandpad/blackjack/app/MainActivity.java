@@ -229,13 +229,6 @@ public class MainActivity extends ActionBarActivity {
 
     private void showPlayerHand() {
         //TODO: make this do stuff
-        int imgRes;
-        for (int k : player_hand) {
-            if (k == 0)
-                break;
-            imgRes = player_hand[k];
-        }
-        img_player_1.setImageResource(R.drawable.card_club_01);
     }
 
     private void showDealerHand() {
