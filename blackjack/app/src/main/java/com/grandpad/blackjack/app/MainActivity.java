@@ -1,5 +1,7 @@
 package com.grandpad.blackjack.app;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -36,8 +39,6 @@ public class MainActivity extends ActionBarActivity {
     Button btn_cancel_bet;
     ImageView img_deck;
 
-    TextView tv_label_add;
-    TextView tv_label_subtract;
     TextView tv_text_bank;
     TextView tv_text_bet;
 
@@ -54,6 +55,8 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         chips = settings.getInt("chips", 1000); //get saved chips. if non-existent set to 1000
+        //TODO: what if at 0 chips? results screen with New Game button.
+        //TODO: popup "here's 1000 to start with"
 
         btn_split = (Button) findViewById(R.id.btn_split);
         btn_double = (Button) findViewById(R.id.btn_double);
@@ -68,8 +71,6 @@ public class MainActivity extends ActionBarActivity {
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
 
-        tv_label_add = (TextView) findViewById(R.id.tv_label_add);
-        tv_label_subtract = (TextView) findViewById(R.id.tv_label_subtract);
         tv_text_bank = (TextView) findViewById(R.id.tv_text_bank);
         tv_text_bet = (TextView) findViewById(R.id.tv_text_bet);
 
@@ -98,7 +99,16 @@ public class MainActivity extends ActionBarActivity {
                 break;//splits
         }
     }
+    private void cantbetDialouge(View v){
 
+        AlertDialog.Builder builder = new Builder(getContext());
+        builder.setTitle("Warning").setMessage(str_mesg);
+        builder.setPositiveButton("Okay",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface di,int i) {
+
+            }
+        });
+    }
     public void doubleHand(View v) {
         switch (currentScreen) {
             case BET:
@@ -109,14 +119,22 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//minus 5
             case FIRSTCHOICE://set double down and goto game over
-                currentBet = currentBet * 2;
-                tv_text_bet.setText(String.valueOf(currentBet));
-                playerHand.add(getNextCard());
-                setResultScreen();
-                break;
-        }
+                if (currentBet * 2 < currentBet){
+                    currentBet = currentBet * 2;
+                }
+                else{ currentBet = currentBet * 1
 
-    }
+
+
+                    //todo: make sure doesn't exceed chips available
+                    tv_text_bet.setText(String.valueOf(currentBet));
+                    playerHand.add(getNextCard());
+                    showPlayerHand();
+                    setResultScreen();
+                    break;
+                }
+
+        }
 
     public void hit(View v) {
         switch (currentScreen) {
@@ -128,10 +146,14 @@ public class MainActivity extends ActionBarActivity {
                 playerHand.add(getNextCard());
                 setHitScreen();
                 showPlayerHand();
+                if (checkBust(playerHand, false))
+                    setResultScreen();
                 break;
-            case HIT://TODO:need to check for bust
+            case HIT:
                 playerHand.add(getNextCard()); //gets a card
                 showPlayerHand();
+                if (checkBust(playerHand, false))
+                    setResultScreen();
                 break;
         }
     }
@@ -172,20 +194,15 @@ public class MainActivity extends ActionBarActivity {
 
     public void setBetScreen() {
         currentScreen = screens.BET;
-
+        //todo: make add and subtract clear
         btn_minus_one.setBackgroundResource(R.drawable.penny);
         btn_plus_one.setBackgroundResource(R.drawable.penny);
         btn_minus_five.setBackgroundResource(R.drawable.nickel);
         btn_plus_five.setBackgroundResource(R.drawable.nickel);
-
         btn_minus_one.setTextColor(Color.TRANSPARENT);
         btn_plus_one.setTextColor(Color.TRANSPARENT);
         btn_minus_five.setTextColor(Color.TRANSPARENT);
         btn_plus_five.setTextColor(Color.TRANSPARENT);
-
-        tv_label_add.setVisibility(View.VISIBLE);
-        tv_label_subtract.setVisibility(View.VISIBLE);
-
     }
 
     private void setFirstChoice() {
@@ -204,8 +221,6 @@ public class MainActivity extends ActionBarActivity {
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
-        tv_label_add.setVisibility(View.INVISIBLE);
-        tv_label_subtract.setVisibility(View.INVISIBLE);
 
         //reset hand
         playerHand = new ArrayList<Integer>();
@@ -217,7 +232,7 @@ public class MainActivity extends ActionBarActivity {
         playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
 
-        //TODO: display hands
+        //display hands
         showPlayerHand();
         showDealerHand(true);
     }
@@ -255,6 +270,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
+
     private void showDealerHand(boolean hidden) { //checks to see if one card should be hidden
         dealer_row.removeAllViews();
         if (!hidden) {
@@ -329,40 +345,40 @@ public class MainActivity extends ActionBarActivity {
                         imageID = R.drawable.card_heart_01;
                         break;
                     case 2:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_02;
                         break;
                     case 3:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_03;
                         break;
                     case 4:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_04;
                         break;
                     case 5:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_05;
                         break;
                     case 6:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_06;
                         break;
                     case 7:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_07;
                         break;
                     case 8:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_08;
                         break;
                     case 9:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_09;
                         break;
                     case 10:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_10;
                         break;
                     case 11:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_11;
                         break;
                     case 12:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_12;
                         break;
                     case 13:
-                        imageID = R.drawable.card_heart_01;
+                        imageID = R.drawable.card_heart_13;
                         break;
                 }
                 break;
@@ -458,18 +474,7 @@ public class MainActivity extends ActionBarActivity {
         return imageID;
     }
 
-
-
-    /*
-    enum suit
-    select case 1-4
-    enum rank
-    mod?
-    select case
-     */
-
     private void setHitScreen() {
-        //TODO: fill in
         currentScreen = screens.HIT;
         btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
@@ -487,7 +492,7 @@ public class MainActivity extends ActionBarActivity {
         return num;
     }
 
-    public int calculateValue(int cardNum) {
+    public int calculateValue(int cardNum) { //make sure you calculateNum first
 
         //todo: add case for Ace = 1
         int value = -1;
@@ -513,18 +518,81 @@ public class MainActivity extends ActionBarActivity {
         return cardSuit;
     }
 
+    private int calculateTotalValue(ArrayList<Integer> cardList) {
+        int totalValue = 0;
+        for (int card : cardList) {
+            totalValue += calculateValue(calculateNum(card));
+        }
+        return totalValue;
+    }
+
+    private boolean checkBust(ArrayList<Integer> cardList, boolean dealer) {
+        boolean bust = false;
+        int totalValue = calculateTotalValue(cardList);
+        if (dealer) {
+            if (totalValue > 16)
+                bust = true;
+        } else {
+            if (totalValue > 21)
+                bust = true;
+        }
+        return bust;
+    }
+
     private void setResultScreen() {
 
         //todo: slowly flip dealer cards
-        //todo: show win/lose and offer next game
-        btn_split.setVisibility(View.INVISIBLE);
-        btn_double.setVisibility(View.INVISIBLE);
-        btn_hit.setVisibility(View.INVISIBLE);
-        btn_stand.setVisibility(View.INVISIBLE);
-        btn_hit.setVisibility(View.INVISIBLE);
-        btn_cancel_bet.setVisibility(View.INVISIBLE);
+        //todo: show win/lose
+        while (!checkBust(dealerHand, true)) {
+            dealerHand.add(getNextCard());
+        }
+        showDealerHand(false);
+        btn_split.setVisibility(View.GONE);
+        btn_double.setVisibility(View.GONE);
+        btn_hit.setVisibility(View.GONE);
+        btn_stand.setVisibility(View.GONE);
+        btn_hit.setVisibility(View.GONE);
+        btn_cancel_bet.setVisibility(View.GONE);
 
-        //TODO: show who wins
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        settings.edit().putInt("chips", chips).commit();
+
+        //TODO: check who wins
+        int playerValue = -1;
+        int dealerValue = -1;
+        int winnings = currentBet;
+        boolean playerWins = false;
+        if (checkBust(playerHand, false))
+            playerValue = calculateTotalValue(playerHand);
+        if (checkBust(dealerHand, false))
+            dealerValue = calculateTotalValue(dealerHand);
+
+        if (playerValue > dealerValue) {
+            winnings = currentBet * 2;
+            playerWins = true;
+        }
+
+        TextView winnerText = new TextView(this);
+        if (playerWins)
+            winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+        else
+            winnerText.setText("Oh no, you lost: " + winnings + " chips.");
+        winnerText.setWidth(755);
+        winnerText.setHeight(50);
+        TableRow middle_row = (TableRow) findViewById(R.id.middle_row);
+        middle_row.addView(winnerText);
+
+        Button myButton = new Button(this);
+        myButton.setText("Next Round");
+        myButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        LinearLayout ll_rightColumn = (LinearLayout) findViewById(R.id.ll_rightColumn);
+        ll_rightColumn.addView(myButton, 175, 100);
+
     }
 
     public enum screens {BET, FIRSTCHOICE, HIT, DOUBLEDOWN, GAMEOVER}
