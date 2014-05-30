@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -42,8 +43,8 @@ public class MainActivity extends ActionBarActivity {
     TableRow dealer_row;
     //card arrays
     int[] deck = new int[53];
-    int[] dealer_hand = new int[10];
-    int[] player_hand = new int[10];
+    ArrayList<Integer> dealerHand = new ArrayList<Integer>();
+    ArrayList<Integer> playerHand = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,7 @@ public class MainActivity extends ActionBarActivity {
             case FIRSTCHOICE://set double down and goto game over
                 currentBet = currentBet * 2;
                 tv_text_bet.setText(String.valueOf(currentBet));
-                player_hand[2] = getNextCard();
+                playerHand.add(getNextCard());
                 setResultScreen();
                 break;
         }
@@ -125,6 +126,8 @@ public class MainActivity extends ActionBarActivity {
                 updateBet();
                 break;//plus 1
             case FIRSTCHOICE://hits then set screen to hit
+                currentScreen = screens.HIT;
+                playerHand.add(getNextCard());
                 break;
         }
     }
@@ -187,14 +190,14 @@ public class MainActivity extends ActionBarActivity {
         btn_cancel_bet.setVisibility(View.INVISIBLE);
 
         //reset hand
-        dealer_hand = new int[10];
-        player_hand = new int[10];
+        playerhand = new ArrayList<Integer>();
+        dealerHand = new ArrayList<Integer>();
 
         //create starting hands
-        player_hand[0] = getNextCard();
-        dealer_hand[0] = getNextCard();
-        player_hand[1] = getNextCard();
-        dealer_hand[1] = getNextCard();
+        playerhand.add(getNextCard());
+        dealerHand.add(getNextCard());
+        playerhand.add(getNextCard());
+        dealerHand.add(getNextCard());
 
         //TODO: display hands
         showPlayerHand();
@@ -212,11 +215,11 @@ public class MainActivity extends ActionBarActivity {
 
     private boolean checkAlreadyUsed(int i) {
         boolean used = false;
-        for (int k : dealer_hand) {
+        for (int k : dealerHand) {
             if (k == i)
                 used = true;
         }
-        for (int k : player_hand) {
+        for (int k : playerHand) {
             if (k == i)
                 used = true;
         }
@@ -224,7 +227,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void showPlayerHand() {
-        for (int k : player_hand) {
+        for (int k : playerHand) {
             if (k != 0) //make sure its an initialized variable. no card will ever be 0
             {
                 ImageView view = new ImageView(MainActivity.this);
@@ -235,7 +238,7 @@ public class MainActivity extends ActionBarActivity {
     }
     private void showDealerHand(boolean hidden) { //checks to see if one card should be hidden
         if (!hidden) {
-            for (int k : dealer_hand) {
+            for (int k : dealerHand) {
                 if (k != 0) //make sure its an initialized variable. no card will ever be 0
                 {
                     ImageView view = new ImageView(MainActivity.this);
@@ -244,7 +247,7 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         } else {
-            int k = dealer_hand[0]; //should always have a card. be careful of calling this method if it doesn't
+            int k = dealerHand.get(0); //should always have a card. be careful of calling this method if it doesn't
             ImageView view = new ImageView(MainActivity.this);
             view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
             dealer_row.addView(view, 100, 150);
