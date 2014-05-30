@@ -95,6 +95,8 @@ public class MainActivity extends ActionBarActivity {
     public void split(View v) {
         switch (currentScreen) {
             case BET:
+                if (currentBet >= 1)
+                    currentBet--;
                 break;//subtract 1
             case FIRSTCHOICE:
                 break;//splits
@@ -104,6 +106,10 @@ public class MainActivity extends ActionBarActivity {
     public void doubleHand(View v) {
         switch (currentScreen) {
             case BET:
+                if (currentBet > 5)
+                    currentBet--;
+                else
+                    currentBet = 0;
                 break;//minus 5
             case FIRSTCHOICE:
                 break; //set double down and goto game over
@@ -114,6 +120,7 @@ public class MainActivity extends ActionBarActivity {
     public void hit(View v) {
         switch (currentScreen) {
             case BET:
+                currentBet++;
                 break;//plus 1
             case FIRSTCHOICE:
                 break; //hits then set screen to hit
@@ -123,6 +130,7 @@ public class MainActivity extends ActionBarActivity {
     public void stand(View v) {
         switch (currentScreen) {
             case BET:
+                currentBet = +5;
                 break;//plus 5
             case FIRSTCHOICE:
                 break; //stop and set screen to game over
@@ -132,6 +140,7 @@ public class MainActivity extends ActionBarActivity {
     public void bet(View v) {
         switch (currentScreen) {
             case BET:
+                currentScreen = screens.FIRSTCHOICE;
                 break;//sets bet /goto firstchoice
         }
     }
@@ -139,6 +148,7 @@ public class MainActivity extends ActionBarActivity {
     public void cancelBet(View v) {
         switch (currentScreen) {
             case BET:
+                currentBet = 0;
                 break;//setbet to 0 and continue
         }
     }
