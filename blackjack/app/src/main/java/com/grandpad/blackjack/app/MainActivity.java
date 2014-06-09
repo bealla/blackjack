@@ -67,8 +67,8 @@ public class MainActivity extends ActionBarActivity {
 
 
         if (chips == 0) {
-            chips = 10;
-            alertDialog();
+            chips = 1000;
+            haveChips();
         }
 
 
@@ -218,27 +218,16 @@ public class MainActivity extends ActionBarActivity {
     //}
 public void notEnoughChips()
 {
-    new AlertDialog("not enough chips", "can't bet", R.drawable.alert, false, this).show();
+    new AlertDialog("You do not have enough chips to complete your bet", "Chips",  R.drawable.alert, false, this).show();
 }
 
    // private void haveChips() {
         // popup not enough chips
-        public void alertDialog()
+        public void haveChips()
         {
-            new AlertDialog("yay test button", "have chips", R.drawable.alert, false, this).show();
+            new AlertDialog("You are starting a new game with 1000 chips to bet with", "Chips",  R.drawable.alert, false, this).show();
         }
-        //AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        //builder.setMessage("Have some more chips ");
-        //builder.setTitle("Chips");
-        //builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-          //  @Override
-            //public void onClick(DialogInterface dialogInterface, int i) {
 
-           // }
-       // });
-       // AlertDialog haveChips = builder.create();
-        //haveChips.show();
-    //}
 
 
 
@@ -264,7 +253,7 @@ public void notEnoughChips()
 
     private void setFirstChoice() {
 
-        //todo: check for splitting as an option. only show if possible
+
         currentScreen = screens.FIRSTCHOICE;
         btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
         btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
@@ -291,10 +280,10 @@ public void notEnoughChips()
         playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
 
-        if (calculateValue(playerHand.get(0)) == calculateValue(playerHand.get(1)))
-            btn_split.setActivated(true);
-        else
-            btn_split.setActivated(false);
+        //if (calculateValue(playerHand.get(0)) == calculateValue(playerHand.get(1)))
+          //  btn_split.setActivated(true);
+        //else
+          //  btn_split.setActivated(false);
         //display hands
         showPlayerHand();
         showDealerHand(true);
@@ -663,15 +652,28 @@ public void notEnoughChips()
             playerWins = true;
         }
 
-        TextView winnerText = new TextView(this);
+        //TextView winnerText = new TextView(this);
         if (playerWins) {
-            winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+            //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+            new AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).show();
+
             chips += winnings;
+
+
         } else {
-            winnerText.setText("Oh no, you lost: " + winnings + " chips.");
+            if (chips == 0) {
+                //does not actually go to the bet screen, still gives option for next round but with reset chips
+                new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
+                chips =1000;
+                setBetScreen();
+            } else {
+                new AlertDialog("Oh no, you lost: " + winnings + " chips.","Chips",  R.drawable.alert, false, this).show();
+
+            }
+
         }
-        winnerText.setWidth(175);
-        winnerText.setHeight(100);
+        //winnerText.setWidth(175);
+        //winnerText.setHeight(100);
 
         Button myButton = new Button(this);
         myButton.setText("Next Round");
@@ -683,7 +685,7 @@ public void notEnoughChips()
         });
         LinearLayout ll_rightColumn = (LinearLayout) findViewById(R.id.ll_rightColumn);
 
-        ll_rightColumn.addView(winnerText);
+        //ll_rightColumn.addView(winnerText);
         ll_rightColumn.addView(myButton, 175, 100);
 
         settings.edit().putInt("chips", chips).commit();

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
+
 public class InstructionActivity extends FirstActivity {
 
 
@@ -21,7 +22,8 @@ public class InstructionActivity extends FirstActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.howto_screen);
-        ImageView arrow = (ImageView) findViewById(R.id.arrow);
+    }
+      /*  ImageView arrow = (ImageView) findViewById(R.id.arrow);
         ImageView arrow2 = (ImageView) findViewById(R.id.arrow2);
         ImageView arrow3 = (ImageView) findViewById(R.id.arrow3);
 
@@ -37,29 +39,61 @@ public class InstructionActivity extends FirstActivity {
         arrow2.startAnimation(mAnimation);
 
         arrow3 = (ImageView) findViewById(R.id.arrow3);
-        arrow3.startAnimation(mAnimation);
+        arrow3.startAnimation(mAnimation);*/
 
 
-        Button btn_double = (Button) findViewById(R.id.btn_double);
-        btn_double.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //
+        // Button btn_double = (Button) findViewById(R.id.btn_double);
+         //btn_double.setOnClickListener(new View.OnClickListener() {
+        //public void onClick(View view)
 
 
-                AlertDialog alertDialog = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
-                alertDialog.setTitle("Double Down");
-                alertDialog.setMessage("Before your first hit you can double your bet and receive one more card to complete your hand");
-
-                alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //
-                    }
-                });
-
-                alertDialog.show();
+            public void howtoDouble () {
+                new com.grandpad.blackjack.app.AlertDialog("Before your first hit you can double your bet and receive one more card to complete your hand", "Double Down", R.drawable.alert, false, this).show();
             }
-        });
-        Button btn_split = (Button) findViewById(R.id.btn_split);
+
+
+    public void howtoHit() {
+        new com.grandpad.blackjack.app.AlertDialog("Tap the hit button if you want to add another card to your hand", "Hit", R.drawable.alert, false, this).show();
+
+    }
+
+    public void howtoStand() {
+        new com.grandpad.blackjack.app.AlertDialog("Tap Stand to complete your round and reveal the dealer's hand", "Stand", R.drawable.alert, false, this).show();
+
+    }
+
+    public void howtoBet() {
+        new com.grandpad.blackjack.app.AlertDialog("Add and subtract from the amount you want to bet and tap submit bet when you are happy with your choice", "Bet", R.drawable.alert, false, this).show();
+    }
+
+
+    public void howtoDealersHand() {
+        new com.grandpad.blackjack.app.AlertDialog("This is the dealer's hand", "Dealer's Hand", R.drawable.alert, false, this).show();
+    }
+
+    public void howtoYourHand() {
+        new com.grandpad.blackjack.app.AlertDialog("This is your hand", "Your Hand", R.drawable.alert, false, this).show();
+    }
+
+    public void howtoSideBar() {
+        new com.grandpad.blackjack.app.AlertDialog("These are each of your playing options;Tap each one to learn when to use them", "Play Options", R.drawable.alert, false, this).show();
+    }
+
+
+    //AlertDialog alertDialog = new AlertDialog.Builder(InstructionActivity.this).create(); //Read Update
+    //alertDialog.setTitle("Double Down");
+    //alertDialog.setMessage("Before your first hit you can double your bet and receive one more card to complete your hand");
+
+    //alertDialog.setButton("Continue..", new DialogInterface.OnClickListener() {
+    //  public void onClick(DialogInterface dialog, int which) {
+    //
+    //}
+    // });
+
+    //alertDialog.show();
+    // }
+    //});
+/*        Button btn_split = (Button) findViewById(R.id.btn_split);
         btn_split.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
@@ -232,9 +266,10 @@ public class InstructionActivity extends FirstActivity {
 
 
             }
-        });
-    }
+        });*/
 }
+
+
 
 
 

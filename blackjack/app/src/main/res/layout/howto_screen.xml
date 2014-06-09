@@ -21,30 +21,19 @@
             android:minHeight="150dp">
 
 
-            <ImageView
-                android:id="@+id/arrow"
+            <Button
+                android:id="@+id/btn_learnMore"
+                android:text="Tap to learn more"
+                android:onClick="howtoDealersHand"
                 android:layout_gravity="center|left"
                 android:layout_height="40dp"
                 android:layout_width="80dp"
                 android:visibility="visible"
-                android:src="@drawable/arrow"
+
                 >
-            </ImageView>
+            </Button>
 
-            <ImageView
-                android:id="@+id/img_deck"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:onClick="img_deck"
-                android:src="@drawable/card_back"></ImageView>
 
-            <ImageView
-                android:id="@+id/img_invis"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:onClick="img_deck"
-                android:src="@drawable/card_back"
-                android:visibility="invisible"></ImageView>
 
             <ImageView
                 android:id="@+id/img_dealer_revealed"
@@ -125,15 +114,17 @@
 
 
 
-            <ImageView
-                android:id="@+id/arrow3"
+            <Button
+                android:id="@+id/btn_learnMore3"
+                android:text="Tap to learn more"
+                android:onClick="howtoSideBar"
                 android:layout_gravity="right|center"
                 android:layout_height="40dp"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:visibility="visible"
-                android:src="@drawable/arrow"
+
                 >
-            </ImageView>
+            </Button>
 
         </TableRow>
 
@@ -144,15 +135,17 @@
             android:minHeight="150dp">
 
 
-            <ImageView
-                android:id="@+id/arrow2"
+            <Button
+                android:id="@+id/btn_learnMore2"
+                android:text="Tap to learn more"
+                android:onClick="howtoYourHand"
                 android:layout_gravity="center|left"
                 android:layout_height="40dp"
                 android:layout_width="80dp"
                 android:visibility="visible"
                 android:src="@drawable/arrow"
                 >
-            </ImageView>
+            </Button>
 
             <ImageView
                 android:id="@+id/img_player_1"
@@ -231,7 +224,8 @@
                     android:id="@+id/btn_double"
                     android:layout_width="100dp"
                     android:layout_height="75dp"
-                    android:text="Double Down" />
+                    android:text="Double Down"
+                    android:onClick="howtoDouble"/>
 
 
             </LinearLayout>
@@ -248,13 +242,14 @@
                     android:layout_width="100dp"
                     android:layout_height="75dp"
                     android:text="Hit"
-                    android:onClick="hitCommands"/>
+                    android:onClick="howtoHit"/>
 
                 <Button
                     android:id="@+id/btn_stand"
                     android:layout_width="100dp"
                     android:layout_height="75dp"
-                    android:text="Stand" />
+                    android:text="Stand"
+                    android:onClick="howtoStand"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -263,13 +258,15 @@
             android:id="@+id/btn_bet"
             android:layout_width="125dp"
             android:layout_height="50dp"
-            android:text="Bet" />
+            android:text="Bet"
+            android:onClick="howtoBet"/>
 
         <Button
             android:id="@+id/btn_cancel_bet"
             android:layout_width="125dp"
             android:layout_height="50dp"
-            android:text="Cancel Bet" />
+            android:text="Cancel Bet"
+            android:onClick="howtoCancel"/>
 
     </LinearLayout>
 
