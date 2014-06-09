@@ -1,6 +1,6 @@
 package com.grandpad.blackjack.app;
 
-import android.app.AlertDialog;
+//import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +13,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.grandpad.blackjack.app.AlertDialog;
+import com.grandpad.blackjack.app.ConfirmDialog;
+import com.grandpad.blackjack.app.CustomDialog;
+import com.grandpad.blackjack.app.TwoButtonDialog;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -59,11 +64,11 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         chips = settings.getInt("chips", 1000); //get saved chips. if non-existent set to 1000
         //TODO: what if at 0 chips? results screen with New Game button.
-        //TODO: popup "here's 1000 to start with"
+
 
         if (chips == 0) {
-            chips = 1000;
-            haveChips();
+            chips = 10;
+            alertDialog();
         }
 
 
@@ -197,35 +202,43 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    private void notEnoughChips() {
+   // private void notEnoughChips() {
         // popup not enough chips
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage(R.string.not_enough_chips);
-        builder.setTitle(R.string.cant_bet);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+     //   AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+       // builder.setMessage(R.string.not_enough_chips);
+        //builder.setTitle(R.string.cant_bet);
+        //builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+          //  @Override
+            //public void onClick(DialogInterface dialogInterface, int i) {
 
-            }
-        });
-        AlertDialog notEnoughChips = builder.create();
-        notEnoughChips.show();
-    }
+//            }
+       // });
+     //   AlertDialog notEnoughChips = builder.create();
+       // notEnoughChips.show();
+    //}
+public void notEnoughChips()
+{
+    new AlertDialog("not enough chips", "can't bet", R.drawable.alert, false, this).show();
+}
 
-    private void haveChips() {
+   // private void haveChips() {
         // popup not enough chips
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("Have some more chips ");
-        builder.setTitle("Chips");
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+        public void alertDialog()
+        {
+            new AlertDialog("yay test button", "have chips", R.drawable.alert, false, this).show();
+        }
+        //AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        //builder.setMessage("Have some more chips ");
+        //builder.setTitle("Chips");
+        //builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+          //  @Override
+            //public void onClick(DialogInterface dialogInterface, int i) {
 
-            }
-        });
-        AlertDialog haveChips = builder.create();
-        haveChips.show();
-    }
+           // }
+       // });
+       // AlertDialog haveChips = builder.create();
+        //haveChips.show();
+    //}
 
 
 
@@ -544,10 +557,10 @@ public class MainActivity extends ActionBarActivity {
 
     public int calculateValue(int cardNum) { //make sure you calculateNum first
 
-        //todo: add case for Ace = 1
+
         int value = -1;
         if (cardNum > 9)
-            value = 10;
+            value = 10 ;
         else if (cardNum > 1)
             value = cardNum;
         else if (cardNum == 1)
@@ -570,11 +583,40 @@ public class MainActivity extends ActionBarActivity {
 
     private int calculateTotalValue(ArrayList<Integer> cardList) {
         int totalValue = 0;
+        int aceValue = 0;
+
         for (int card : cardList) {
-            totalValue += calculateValue(calculateNum(card));
+            if (totalValue >= 11 && calculateValue(calculateNum(card)) == 11) {
+
+                totalValue += 1;
+
+
+
+            } else {
+                if(calculateValue(calculateNum(card)) == 11){
+                    totalValue += 11;
+                    aceValue +=1;
+                }
+                else {
+
+
+                    totalValue += calculateValue(calculateNum(card));
+                }
+
+
+            }
         }
-        return totalValue;
+        while (totalValue >21 && aceValue > 0) {
+            totalValue -= 10;
+            aceValue -= 1;
+        }
+
+
+            return totalValue;
+
     }
+
+
 
     private boolean checkBust(ArrayList<Integer> cardList, boolean dealer) {
         boolean bust = false;
