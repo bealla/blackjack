@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.content.Context;
 
 import com.grandpad.blackjack.app.AlertDialog;
 import com.grandpad.blackjack.app.ConfirmDialog;
@@ -66,12 +62,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        chips = settings.getInt("chips", 10); //get saved chips. if non-existent set to 1000
+        chips = settings.getInt("chips", 1000); //get saved chips. if non-existent set to 1000
         //TODO: what if at 0 chips? results screen with New Game button.
 
-
         if (chips == 0) {
-            chips = 10;
+            chips = 1000;
             haveChips();
         }
 
@@ -206,31 +201,31 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-   // private void notEnoughChips() {
-        // popup not enough chips
-     //   AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-       // builder.setMessage(R.string.not_enough_chips);
-        //builder.setTitle(R.string.cant_bet);
-        //builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-          //  @Override
-            //public void onClick(DialogInterface dialogInterface, int i) {
+    // private void notEnoughChips() {
+    // popup not enough chips
+    //   AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+    // builder.setMessage(R.string.not_enough_chips);
+    //builder.setTitle(R.string.cant_bet);
+    //builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+    //  @Override
+    //public void onClick(DialogInterface dialogInterface, int i) {
 
-//            }
-       // });
-     //   AlertDialog notEnoughChips = builder.create();
-       // notEnoughChips.show();
+    //            }
+    // });
+    //   AlertDialog notEnoughChips = builder.create();
+    // notEnoughChips.show();
     //}
-public void notEnoughChips()
-{
-    new AlertDialog("You do not have enough chips to complete your bet", "Chips",  R.drawable.alert, false, this).show();
-}
+    public void notEnoughChips()
+    {
+        new AlertDialog("You do not have enough chips to complete your bet", "Chips",  R.drawable.alert, false, this).show();
+    }
 
-   // private void haveChips() {
-        // popup not enough chips
-        public void haveChips()
-        {
-            new AlertDialog("You are starting a new game with 1000 chips to bet with", "Chips",  R.drawable.alert, false, this).show();
-        }
+    // private void haveChips() {
+    // popup not enough chips
+    public void haveChips()
+    {
+        new AlertDialog("You are starting a new game with 1000 chips to bet with", "Chips",  R.drawable.alert, false, this).show();
+    }
 
 
 
@@ -285,9 +280,9 @@ public void notEnoughChips()
         dealerHand.add(getNextCard());
 
         //if (calculateValue(playerHand.get(0)) == calculateValue(playerHand.get(1)))
-          //  btn_split.setActivated(true);
+        //  btn_split.setActivated(true);
         //else
-          //  btn_split.setActivated(false);
+        //  btn_split.setActivated(false);
         //display hands
         showPlayerHand();
         showDealerHand(true);
@@ -605,7 +600,7 @@ public void notEnoughChips()
         }
 
 
-            return totalValue;
+        return totalValue;
 
     }
 
@@ -656,64 +651,35 @@ public void notEnoughChips()
             playerWins = true;
         }
 
+
+        Button myButton = new Button(this);
         //TextView winnerText = new TextView(this);
         if (playerWins) {
             //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
             new AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).show();
-            //Handler handler = new Handler();
-            //handler.postDelayed(new Runnable(){
-              //  public void run(){
-                //    AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).dismiss();
-                //}
 
-            //}, 5500); // in milliseconds
+            chips += winnings;
 
-            //chips += winnings;
+            myButton.setText("Next Round");
 
-
-        } else if ( && chips == 0) {
+        } else {
+            if (chips == 0) {
                 //does not actually go to the bet screen, still gives option for next round but with reset chips
+                new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
 
+                myButton.setText("New Game");
 
-
-                    final ConfirmDialog dialog = new ConfirmDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game", R.drawable.alert, this);
-                    dialog.setPositiveButton(new OnClickListener()
-                    {
-
-                        @Override
-                        public void onClick(View v)
-                        {
-                            MainActivity.this.recreate();
-                            dialog.dismiss();
-
-
-                        }
-                    });
-//                new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
-//                findViewById(R.id.btn_dialog_ok).setOnClickListener(new View.OnClickListener() {
-//                   public void onClick(View view) {
-//                       MainActivity.this.recreate();
-//                       //Intent intent = new Intent(MainActivity.this, MainActivity.class);
-//                       //startActivity(intent);
-//                    }
-//                });
-
-
-
-
-
-
-
+                //setBetScreen();//this needs to be fixed
             } else {
                 new AlertDialog("Oh no, you lost: " + winnings + " chips.","Chips",  R.drawable.alert, false, this).show();
 
+                myButton.setText("Next Round");
+
             }
 
-
+        }
         //winnerText.setWidth(175);
         //winnerText.setHeight(100);
-
-        Button myButton = new Button(this);
         myButton.setText("Next Round");
         myButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
