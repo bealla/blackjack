@@ -1,7 +1,7 @@
 package com.grandpad.blackjack.app;
 
 //import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,11 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.grandpad.blackjack.app.AlertDialog;
-import com.grandpad.blackjack.app.ConfirmDialog;
-import com.grandpad.blackjack.app.CustomDialog;
-import com.grandpad.blackjack.app.TwoButtonDialog;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -235,10 +230,10 @@ public class MainActivity extends ActionBarActivity {
         currentScreen = screens.BET;
 
 
-        btn_minus_one.setBackgroundResource(R.drawable.penny);
-        btn_plus_one.setBackgroundResource(R.drawable.penny);
-        btn_minus_five.setBackgroundResource(R.drawable.nickel);
-        btn_plus_five.setBackgroundResource(R.drawable.nickel);
+        btn_minus_one.setBackgroundResource(R.drawable.minusone);
+        btn_plus_one.setBackgroundResource(R.drawable.plusone);
+        btn_minus_five.setBackgroundResource(R.drawable.minusfive);
+        btn_plus_five.setBackgroundResource(R.drawable.plusfive);
 
         btn_minus_one.setTextColor(Color.TRANSPARENT);
         btn_plus_one.setTextColor(Color.TRANSPARENT);
