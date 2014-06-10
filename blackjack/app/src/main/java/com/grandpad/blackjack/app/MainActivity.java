@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
 
         if (chips == 0) {
             chips = 1000;
-            haveChips();
+            //haveChips();
         }
 
 
@@ -222,10 +222,10 @@ public class MainActivity extends ActionBarActivity {
 
     // private void haveChips() {
     // popup not enough chips
-    public void haveChips()
-    {
-        new AlertDialog("You are starting a new game with 1000 chips to bet with", "Chips",  R.drawable.alert, false, this).show();
-    }
+   // public void haveChips()
+    //{
+      //  new AlertDialog("You are starting a new game with 1000 chips to bet with", "Chips",  R.drawable.alert, false, this).show();
+    //}
 
 
 
@@ -662,25 +662,26 @@ public class MainActivity extends ActionBarActivity {
 
             myButton.setText("Next Round");
 
-        } else {
-            if (chips == 0) {
+        } else if (chips == 0){
                 //does not actually go to the bet screen, still gives option for next round but with reset chips
                 new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
 
                 myButton.setText("New Game");
 
                 //setBetScreen();//this needs to be fixed
-            } else {
-                new AlertDialog("Oh no, you lost: " + winnings + " chips.","Chips",  R.drawable.alert, false, this).show();
+            } else if (!playerWins) {
+                new AlertDialog("Oh no, you lost: " + winnings + " chips.", "Chips", R.drawable.alert, false, this).show();
 
                 myButton.setText("Next Round");
 
-            }
 
         }
+
+
+
         //winnerText.setWidth(175);
         //winnerText.setHeight(100);
-        myButton.setText("Next Round");
+        //myButton.setText("Next Round");
         myButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
