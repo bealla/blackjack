@@ -12,7 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
-
+import android.os.Handler;
 
 
 public class InstructionActivity extends FirstActivity {
@@ -49,6 +49,7 @@ public class InstructionActivity extends FirstActivity {
 
             public void howtoDouble () {
                 new com.grandpad.blackjack.app.AlertDialog("Before your first hit you can double your bet and receive one more card to complete your hand", "Double Down", R.drawable.alert, false, this).show();
+
             }
 
 
