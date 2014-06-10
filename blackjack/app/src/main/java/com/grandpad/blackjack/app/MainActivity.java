@@ -40,8 +40,7 @@ public class MainActivity extends ActionBarActivity {
     Button btn_cancel_bet;
     ImageView img_deck;
 
-    TextView tv_label_add;
-    TextView tv_label_subtract;
+
     TextView tv_text_bank;
     TextView tv_text_bet;
 
@@ -79,8 +78,6 @@ public class MainActivity extends ActionBarActivity {
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
 
-        tv_label_add = (TextView) findViewById(R.id.tv_label_add);
-        tv_label_subtract = (TextView) findViewById(R.id.tv_label_subtract);
         tv_text_bank = (TextView) findViewById(R.id.tv_text_bank);
         tv_text_bet = (TextView) findViewById(R.id.tv_text_bet);
 
@@ -240,8 +237,7 @@ public class MainActivity extends ActionBarActivity {
         btn_minus_five.setTextColor(Color.TRANSPARENT);
         btn_plus_five.setTextColor(Color.TRANSPARENT);
 
-        tv_label_add.setVisibility(View.VISIBLE);
-        tv_label_subtract.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -261,8 +257,7 @@ public class MainActivity extends ActionBarActivity {
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
-        tv_label_add.setVisibility(View.INVISIBLE);
-        tv_label_subtract.setVisibility(View.INVISIBLE);
+      
 
         //reset hand
         playerHand = new ArrayList<Integer>();
