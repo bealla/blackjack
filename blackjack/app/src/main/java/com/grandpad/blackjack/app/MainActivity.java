@@ -8,11 +8,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -53,6 +56,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -193,44 +197,26 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    // private void notEnoughChips() {
-    // popup not enough chips
-    //   AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-    // builder.setMessage(R.string.not_enough_chips);
-    //builder.setTitle(R.string.cant_bet);
-    //builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-    //  @Override
-    //public void onClick(DialogInterface dialogInterface, int i) {
 
-    //            }
-    // });
-    //   AlertDialog notEnoughChips = builder.create();
-    // notEnoughChips.show();
-    //}
     public void notEnoughChips()
     {
         new AlertDialog("You do not have enough chips to complete your bet", "Chips",  R.drawable.alert, false, this).show();
     }
-
-    // private void haveChips() {
-    // popup not enough chips
-   // public void haveChips()
-    //{
-      //  new AlertDialog("You are starting a new game with 1000 chips to bet with", "Chips",  R.drawable.alert, false, this).show();
-    //}
-
-
-
 
 
     public void setBetScreen() {
         currentScreen = screens.BET;
 
 
-        btn_minus_one.setBackgroundResource(R.drawable.minusone);
-        btn_plus_one.setBackgroundResource(R.drawable.plusone);
-        btn_minus_five.setBackgroundResource(R.drawable.minusfive);
-        btn_plus_five.setBackgroundResource(R.drawable.plusfive);
+        btn_minus_one.setBackgroundResource(R.drawable.btn_red);
+        btn_plus_one.setBackgroundResource(R.drawable.btn_green);
+        btn_minus_five.setBackgroundResource(R.drawable.btn_red);
+        btn_plus_five.setBackgroundResource(R.drawable.btn_green);
+
+        //btn_minus_one.setBackgroundResource(R.drawable.minusone);
+        //btn_plus_one.setBackgroundResource(R.drawable.plusone);
+        //btn_minus_five.setBackgroundResource(R.drawable.minusfive);
+        //btn_plus_five.setBackgroundResource(R.drawable.plusfive);
 
         btn_minus_one.setTextColor(Color.TRANSPARENT);
         btn_plus_one.setTextColor(Color.TRANSPARENT);
@@ -257,7 +243,7 @@ public class MainActivity extends ActionBarActivity {
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
-      
+
 
         //reset hand
         playerHand = new ArrayList<Integer>();
@@ -307,7 +293,7 @@ public class MainActivity extends ActionBarActivity {
             {
                 ImageView view = new ImageView(MainActivity.this);
                 view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
-                player_row.addView(view, 100, 175);
+                player_row.addView(view, 136, 190);
             }
         }
     }
@@ -320,17 +306,17 @@ public class MainActivity extends ActionBarActivity {
                 {
                     ImageView view = new ImageView(MainActivity.this);
                     view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
-                    dealer_row.addView(view, 100, 175);
+                    dealer_row.addView(view, 136, 190);
                 }
             }
         } else {
             int k = dealerHand.get(0); //should always have a card. be careful of calling this method if it doesn't
             ImageView view = new ImageView(MainActivity.this);
             view.setImageResource(getImageID(getSuit(k), calculateNum(k)));
-            dealer_row.addView(view, 100, 150);
+            dealer_row.addView(view, 136, 190);
             ImageView back = new ImageView(MainActivity.this);
             back.setImageResource(R.drawable.card_back);
-            dealer_row.addView(back, 100, 150);
+            dealer_row.addView(back, 136, 190);
         }
     }
 
@@ -653,16 +639,16 @@ public class MainActivity extends ActionBarActivity {
             myButton.setText("Next Round");
 
         } else if (chips == 0){
-                //does not actually go to the bet screen, still gives option for next round but with reset chips
-                new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
+            //does not actually go to the bet screen, still gives option for next round but with reset chips
+            new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
 
-                myButton.setText("New Game");
+            myButton.setText("New Game");
 
-                //setBetScreen();//this needs to be fixed
-            } else if (!playerWins) {
-                new AlertDialog("Oh no, you lost: " + winnings + " chips.", "Chips", R.drawable.alert, false, this).show();
+            //setBetScreen();//this needs to be fixed
+        } else if (!playerWins) {
+            new AlertDialog("Oh no, you lost: " + winnings + " chips.", "Chips", R.drawable.alert, false, this).show();
 
-                myButton.setText("Next Round");
+            myButton.setText("Next Round");
 
 
         }
