@@ -15,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -93,19 +91,6 @@ public class MainActivity extends ActionBarActivity {
         dealer_row = (TableRow) findViewById(R.id.dealer_row);
 
         setBetScreen();
-    }
-
-    public void split(View v) {
-        switch (currentScreen) {
-            case BET:
-                if (currentBet >= 1)
-                    currentBet--;
-                updateBet();
-                break;//subtract 1
-            case FIRSTCHOICE:
-
-                break;//splits
-        }
     }
 
     public void doubleHand(View v) {
@@ -222,19 +207,16 @@ public class MainActivity extends ActionBarActivity {
         btn_plus_one.setTextColor(Color.TRANSPARENT);
         btn_minus_five.setTextColor(Color.TRANSPARENT);
         btn_plus_five.setTextColor(Color.TRANSPARENT);
-
-
-
     }
 
     private void setFirstChoice() {
 
 
         currentScreen = screens.FIRSTCHOICE;
-        btn_minus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_plus_one.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_minus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
-        btn_plus_five.setBackgroundResource(R.drawable.abc_item_background_holo_light);
+        btn_minus_one.setBackgroundResource(android.R.drawable.btn_default);
+        btn_plus_one.setBackgroundResource(android.R.drawable.btn_default);
+        btn_minus_five.setBackgroundResource(android.R.drawable.btn_default);
+        btn_plus_five.setBackgroundResource(android.R.drawable.btn_default);
 
         btn_minus_one.setTextColor(Color.DKGRAY);
         btn_plus_one.setTextColor(Color.DKGRAY);
@@ -243,7 +225,7 @@ public class MainActivity extends ActionBarActivity {
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
-
+        btn_minus_one.setVisibility(View.INVISIBLE);
 
         //reset hand
         playerHand = new ArrayList<Integer>();

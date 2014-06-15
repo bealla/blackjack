@@ -1,105 +1,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_wrapper"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
     android:baselineAligned="false"
     android:gravity="left"
     android:orientation="horizontal"
-    android:weightSum="1"
-    android:id="@+id/ll_wrapper">
+    android:weightSum="1">
 
     <TableLayout
         android:layout_width="755dp"
         android:layout_height="wrap_content"
         android:layout_gravity="top|left"
         android:layout_weight="0"
-        android:background="@android:color/holo_green_dark">
+        android:background="#355e3b">
 
 
         <TableRow
+            android:id="@+id/top_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:minHeight="50dp"
-            android:id="@+id/top_row">
+            android:minHeight="50dp">
 
             <TextView
                 android:id="@+id/tv_label_bank"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="5dp"
                 android:layout_height="48dp"
-                android:textSize="30dp"
-                android:text="Chips:" />
+                android:layout_marginRight="5dp"
+                android:text="Chips:"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/tv_text_bank"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="40dp"
                 android:layout_height="48dp"
-                android:textSize="30dp"
-                android:text="" />
+                android:layout_marginRight="40dp"
+                android:text=""
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/tv_label_bet"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="5dp"
                 android:layout_height="48dp"
-                android:textSize="30dp"
-                android:text="Bet:" />
+                android:layout_marginRight="5dp"
+                android:text="Bet:"
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/tv_text_bet"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:textSize="30dp"
-                android:text="" />
-
-
+                android:text=""
+                android:textSize="30dp" />
 
 
         </TableRow>
         <TableRow
+            android:id="@+id/dealer_row"
             android:layout_width="wrap_content"
             android:layout_height="175dp"
             android:gravity="center"
-            android:minHeight="175dp"
-            android:id="@+id/dealer_row"></TableRow>
+            android:minHeight="175dp"></TableRow>
 
         <TableRow
+            android:id="@+id/middle_row"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:minHeight="50dp"
-            android:id="@+id/middle_row">
-
-
+            android:minHeight="50dp">
 
 
         </TableRow>
 
         <TableRow
+            android:id="@+id/player_row"
             android:layout_width="wrap_content"
             android:layout_height="175dp"
             android:gravity="center"
-            android:minHeight="175dp"
-            android:id="@+id/player_row">
+            android:minHeight="175dp">
 
         </TableRow>
     </TableLayout>
 
     <LinearLayout
+        android:id="@+id/ll_rightColumn"
         android:layout_width="fill_parent"
         android:layout_height="450dp"
         android:background="@android:color/background_light"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:id="@+id/ll_rightColumn">
-
-
-
-
-
-
+        android:orientation="vertical">
 
 
         <!--<TextView-->
@@ -123,18 +113,14 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-
-
-
-
                 <Button
-                    android:layout_marginTop="90dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
                     android:id="@+id/btn_split"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="90dp"
                     android:onClick="split"
                     android:text="Split" />
 
@@ -143,8 +129,8 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:onClick="doubleHand"
                     android:text="Double Down" />
 
@@ -160,11 +146,11 @@
 
                 <Button
                     android:id="@+id/btn_hit"
-                    android:layout_marginTop="90dp"
-                    android:layout_marginBottom="5dp"
-
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="90dp"
                     android:onClick="hit"
                     android:text="Hit" />
 
