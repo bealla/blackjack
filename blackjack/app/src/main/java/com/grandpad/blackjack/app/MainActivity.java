@@ -2,6 +2,7 @@ package com.grandpad.blackjack.app;
 
 //import android.app.AlertDialog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.media.MediaPlayer;
+import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -623,7 +625,18 @@ public class MainActivity extends ActionBarActivity {
         //TextView winnerText = new TextView(this);
         if (playerWins) {
             //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
-            new AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 5s = 5000ms
+                    //TODO make the last parameter and winnings work when wrapped up in the run funciton, add delay before displaying dialog for all results
+                    //new AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).show();
+
+
+                }
+            }, 5000);
+
             //mp_win = MediaPlayer.create(this,R.raw.TadaSoundEffect);
             //mp_win.start();
 
