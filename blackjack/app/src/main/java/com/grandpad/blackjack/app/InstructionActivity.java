@@ -27,7 +27,7 @@ public class InstructionActivity extends FirstActivity {
 
 
     public void howtoDouble (View view) {
-        new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
+        new AlertDialog("Tap double down to double your bet and add one more card to your hand", "Double Down",  R.drawable.alert, false, this).show();
 
     }
 

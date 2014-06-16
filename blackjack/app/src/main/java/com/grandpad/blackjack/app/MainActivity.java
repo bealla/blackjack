@@ -79,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
         btn_stand = (Button) findViewById(R.id.btn_stand);
 
 
-        //TODO fix the betting buttons 
+        //TODO fix the betting buttons
         btn_minus_one = (Button) findViewById(R.id.btn_hit);
         //btn_minus_five = (Button) findViewById(R.id.btn_double);
         btn_plus_one = (Button) findViewById(R.id.btn_stand);
