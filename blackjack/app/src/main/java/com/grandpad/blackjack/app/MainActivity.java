@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         chips = settings.getInt("chips", 1000); //get saved chips. if non-existent set to 1000
-        //TODO: what if at 0 chips? results screen with New Game button.
+
 
         if (chips == 0) {
             chips = 1000;
@@ -78,6 +78,8 @@ public class MainActivity extends ActionBarActivity {
         btn_hit = (Button) findViewById(R.id.btn_hit);
         btn_stand = (Button) findViewById(R.id.btn_stand);
 
+
+        //TODO fix the betting buttons 
         btn_minus_one = (Button) findViewById(R.id.btn_hit);
         //btn_minus_five = (Button) findViewById(R.id.btn_double);
         btn_plus_one = (Button) findViewById(R.id.btn_stand);
