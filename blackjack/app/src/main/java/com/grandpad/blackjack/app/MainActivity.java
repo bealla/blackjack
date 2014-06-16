@@ -29,15 +29,12 @@ public class MainActivity extends ActionBarActivity {
     screens currentScreen;
     Random nextCard = new Random();
     //buttons on the right
-   // Button btn_split;
     Button btn_double;
     Button btn_hit;
     Button btn_stand;
     //alt names for the buttons listed above
     Button btn_minus_one;
-    Button btn_minus_five;
     Button btn_plus_one;
-    Button btn_plus_five;
     //standalone buttons
     Button btn_bet;
     Button btn_cancel_bet;
@@ -202,20 +199,12 @@ public class MainActivity extends ActionBarActivity {
 
         btn_minus_one.setBackgroundResource(R.drawable.btn_red);
         btn_plus_one.setBackgroundResource(R.drawable.btn_green);
-       // btn_minus_five.setBackgroundResource(R.drawable.btn_red);
-        //btn_plus_five.setBackgroundResource(R.drawable.btn_green);
 
-        //btn_minus_one.setBackgroundResource(R.drawable.minusone);
-        //btn_plus_one.setBackgroundResource(R.drawable.plusone);
-        //btn_minus_five.setBackgroundResource(R.drawable.minusfive);
-        //btn_plus_five.setBackgroundResource(R.drawable.plusfive);
-
-        btn_minus_one.setTextColor(Color.TRANSPARENT);
-        btn_plus_one.setTextColor(Color.TRANSPARENT);
+        btn_minus_one.setText("-1");
+        btn_plus_one.setText("+1");
+        btn_minus_one.setTextColor(Color.WHITE);
+        btn_plus_one.setTextColor(Color.WHITE);
         btn_double.setVisibility(View.INVISIBLE);
-       // btn_minus_five.setTextColor(Color.TRANSPARENT);
-        //btn_plus_five.setTextColor(Color.TRANSPARENT);
-
     }
 
     private void setFirstChoice() {
@@ -224,16 +213,13 @@ public class MainActivity extends ActionBarActivity {
         currentScreen = screens.FIRSTCHOICE;
         btn_minus_one.setBackgroundResource(android.R.drawable.btn_default);
         btn_plus_one.setBackgroundResource(android.R.drawable.btn_default);
-        //btn_minus_five.setBackgroundResource(android.R.drawable.btn_default);
-        //btn_plus_five.setBackgroundResource(android.R.drawable.btn_default);
 
         btn_minus_one.setTextColor(Color.DKGRAY);
         btn_plus_one.setTextColor(Color.DKGRAY);
         btn_double.setTextColor(Color.DKGRAY);
 
-
-        // btn_minus_five.setTextColor(Color.DKGRAY);
-       // btn_plus_five.setTextColor(Color.DKGRAY);
+        btn_minus_one.setText("Hit");
+        btn_plus_one.setText("Stand");
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
@@ -547,9 +533,6 @@ public class MainActivity extends ActionBarActivity {
             if (totalValue >= 11 && calculateValue(calculateNum(card)) == 11) {
 
                 totalValue += 1;
-
-
-
             } else {
                 if(calculateValue(calculateNum(card)) == 11){
                     totalValue += 11;
@@ -560,8 +543,6 @@ public class MainActivity extends ActionBarActivity {
 
                     totalValue += calculateValue(calculateNum(card));
                 }
-
-
             }
         }
         while (totalValue >21 && aceValue > 0) {
