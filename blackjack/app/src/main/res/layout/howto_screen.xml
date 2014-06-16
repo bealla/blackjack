@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|left"
         android:layout_weight="0"
-        android:background="@android:color/holo_green_dark">
+        android:background="#008000">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -27,8 +27,9 @@
                 android:onClick="howtoDealersHand"
                 android:layout_gravity="center|left"
                 android:layout_height="40dp"
-                android:layout_width="80dp"
+                android:layout_width="180dp"
                 android:visibility="visible"
+                android:background="#008000"
 
                 >
             </Button>
@@ -53,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:minHeight="100dp">
+            android:minHeight="150dp">
 
             <Button
                 android:id="@+id/btn_3"
@@ -102,15 +103,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="50dp"
                 android:visibility="invisible"></Button>
-            <Button
-                android:id="@+id/btn_8"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:enabled="true"
-                android:textColor="@android:color/white"
-                android:textSize="50dp"
-                android:visibility="invisible"></Button>
+
 
 
 
@@ -120,8 +113,9 @@
                 android:onClick="howtoSideBar"
                 android:layout_gravity="right|center"
                 android:layout_height="40dp"
-                android:layout_width="100dp"
+                android:layout_width="180dp"
                 android:visibility="visible"
+                android:background="#008000"
 
                 >
             </Button>
@@ -143,7 +137,8 @@
                 android:layout_height="40dp"
                 android:layout_width="80dp"
                 android:visibility="visible"
-                android:src="@drawable/arrow"
+                android:background="#008000"
+
                 >
             </Button>
 
@@ -163,111 +158,65 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:background="@android:color/background_light"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_label_bank"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Chips:" />
-
-        <TextView
-            android:id="@+id/tv_text_bank"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="" />
 
 
 
-        <TextView
-            android:id="@+id/tv_label_bet"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Bet:" />
+        <Button
+            android:id="@+id/btn_double"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:onClick="howtoDouble"
+            android:text="Double Down" />
 
-        <TextView
-            android:id="@+id/tv_text_lefthand"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Playing Left Hand"
-            android:visibility="invisible"/>
+        <Button
+            android:id="@+id/btn_hit"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
 
-        <TextView
-            android:id="@+id/tv_text_bet"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btn_split"
-                    android:layout_width="100dp"
-                    android:layout_height="75dp"
-                    android:text="Split"
-                    android:onClick="splitCommands"/>
-
-                <Button
-                    android:id="@+id/btn_double"
-                    android:layout_width="100dp"
-                    android:layout_height="75dp"
-                    android:text="Double Down"
-                    android:onClick="howtoDouble"/>
+            android:layout_marginBottom="5dp"
+            android:onClick="howtoHit"
+            android:text="Hit" />
 
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_stand"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="5dp"
 
-                <Button
-                    android:id="@+id/btn_hit"
-                    android:layout_width="100dp"
-                    android:layout_height="75dp"
-                    android:text="Hit"
-                    android:onClick="howtoHit"/>
+            android:onClick="howtoStand"
+            android:text="Stand" />
 
-                <Button
-                    android:id="@+id/btn_stand"
-                    android:layout_width="100dp"
-                    android:layout_height="75dp"
-                    android:text="Stand"
-                    android:onClick="howtoStand"/>
-            </LinearLayout>
 
-        </LinearLayout>
 
         <Button
             android:id="@+id/btn_bet"
             android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:text="Bet"
-            android:onClick="howtoBet"/>
+            android:layout_height="70dp"
+            android:onClick="howtoBet"
+            android:text="Bet" />
 
         <Button
             android:id="@+id/btn_cancel_bet"
             android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:text="Cancel Bet"
-            android:onClick="howtoCancel"/>
+            android:layout_height="70dp"
+            android:onClick="howtoCancelBet"
+            android:text="Cancel Bet" />
 
-    </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
 
 </LinearLayout>

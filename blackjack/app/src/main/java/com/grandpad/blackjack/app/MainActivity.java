@@ -637,6 +637,7 @@ public class MainActivity extends ActionBarActivity {
                 }
             }, 5000);
 
+            //TODO add sounds into raw folder and see if this media player works
             //mp_win = MediaPlayer.create(this,R.raw.TadaSoundEffect);
             //mp_win.start();
 
