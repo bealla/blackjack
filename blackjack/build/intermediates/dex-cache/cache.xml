@@ -2,16 +2,12 @@
 <pre-dex-items>
 
     <item
-        dex="/Users/alexandrabeall/Documents/School/191/blacjack/blackjack/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-fe930dc68beb1e566675ce71b270d4091c6c249b.jar"
-        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        dex="D:\My Documents\GitHub\blackjack\blackjack\app\build\intermediates\pre-dexed\debug\classes-f5a15117e186097b4f28d5244a9bb3748079ca9b.jar"
+        jar="D:\My Documents\GitHub\blackjack\blackjack\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        jumboMode="false" revision="19.1.0" sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28" />
     <item
-        dex="/Users/alexandrabeall/Documents/School/191/blacjack/blackjack/app/build/intermediates/pre-dexed/debug/classes-fa10d6fb200b29c311e4e0c46d28e17ffb002fad.jar"
-        jar="/Users/alexandrabeall/Documents/School/191/blacjack/blackjack/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        dex="D:\My Documents\GitHub\blackjack\blackjack\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-3ed0ec60e5f6c03c54de7ee1740fabf9a4daebd4.jar"
+        jar="C:\Users\Daniel\AppData\Local\Android\android-studio1\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false" revision="19.1.0" sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67" />
 
 </pre-dex-items>

@@ -2,11 +2,12 @@ package com.grandpad.blackjack.app;
 
 //import android.app.AlertDialog;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
@@ -15,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.media.MediaPlayer;
-import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -640,8 +639,8 @@ public class MainActivity extends ActionBarActivity {
             }, 5000);
 
             //TODO add sounds into raw folder and see if this media player works
-            //mp_win = MediaPlayer.create(this,R.raw.TadaSoundEffect);
-            //mp_win.start();
+            mp_win = MediaPlayer.create(this, R.raw.tadasoundeffect);
+            mp_win.start();
 
             chips += winnings;
 
@@ -650,8 +649,8 @@ public class MainActivity extends ActionBarActivity {
         } else if (chips == 0){
             //does not actually go to the bet screen, still gives option for next round but with reset chips
             new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
-            //mp_lose = MediaPlayer.create(this,R.raw.SadTromboneSound);
-            //mp_lose.start();
+            mp_lose = MediaPlayer.create(this, R.raw.sadtrombonesound);
+            mp_lose.start();
 
 
             myButton.setText("New Game");
@@ -659,8 +658,8 @@ public class MainActivity extends ActionBarActivity {
             //setBetScreen();//this needs to be fixed
         } else if (!playerWins) {
             new AlertDialog("Oh no, you lost: " + winnings + " chips.", "Chips", R.drawable.alert, false, this).show();
-            //mp_lose = MediaPlayer.create(this,R.raw.SadTromboneSound);
-            //mp_lose.start();
+            mp_lose = MediaPlayer.create(this, R.raw.sadtrombonesound);
+            mp_lose.start();
 
             myButton.setText("Next Round");
 
