@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
     screens currentScreen;
     Random nextCard = new Random();
     //buttons on the right
-    Button btn_split;
+   // Button btn_split;
     Button btn_double;
     Button btn_hit;
     Button btn_stand;
@@ -40,6 +41,9 @@ public class MainActivity extends ActionBarActivity {
     Button btn_bet;
     Button btn_cancel_bet;
     ImageView img_deck;
+
+    MediaPlayer mp_win;
+    MediaPlayer mp_lose;
 
 
     TextView tv_text_bank;
@@ -67,15 +71,15 @@ public class MainActivity extends ActionBarActivity {
         }
 
 
-        btn_split = (Button) findViewById(R.id.btn_split);
+       // btn_split = (Button) findViewById(R.id.btn_split);
         btn_double = (Button) findViewById(R.id.btn_double);
         btn_hit = (Button) findViewById(R.id.btn_hit);
         btn_stand = (Button) findViewById(R.id.btn_stand);
 
-        btn_minus_one = (Button) findViewById(R.id.btn_split);
-        btn_minus_five = (Button) findViewById(R.id.btn_double);
-        btn_plus_one = (Button) findViewById(R.id.btn_hit);
-        btn_plus_five = (Button) findViewById(R.id.btn_stand);
+        btn_minus_one = (Button) findViewById(R.id.btn_hit);
+        //btn_minus_five = (Button) findViewById(R.id.btn_double);
+        btn_plus_one = (Button) findViewById(R.id.btn_stand);
+        //btn_plus_five = (Button) findViewById(R.id.btn_stand);
 
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
@@ -195,8 +199,8 @@ public class MainActivity extends ActionBarActivity {
 
         btn_minus_one.setBackgroundResource(R.drawable.btn_red);
         btn_plus_one.setBackgroundResource(R.drawable.btn_green);
-        btn_minus_five.setBackgroundResource(R.drawable.btn_red);
-        btn_plus_five.setBackgroundResource(R.drawable.btn_green);
+       // btn_minus_five.setBackgroundResource(R.drawable.btn_red);
+        //btn_plus_five.setBackgroundResource(R.drawable.btn_green);
 
         //btn_minus_one.setBackgroundResource(R.drawable.minusone);
         //btn_plus_one.setBackgroundResource(R.drawable.plusone);
@@ -205,8 +209,10 @@ public class MainActivity extends ActionBarActivity {
 
         btn_minus_one.setTextColor(Color.TRANSPARENT);
         btn_plus_one.setTextColor(Color.TRANSPARENT);
-        btn_minus_five.setTextColor(Color.TRANSPARENT);
-        btn_plus_five.setTextColor(Color.TRANSPARENT);
+        btn_double.setVisibility(View.INVISIBLE);
+       // btn_minus_five.setTextColor(Color.TRANSPARENT);
+        //btn_plus_five.setTextColor(Color.TRANSPARENT);
+
     }
 
     private void setFirstChoice() {
@@ -215,17 +221,20 @@ public class MainActivity extends ActionBarActivity {
         currentScreen = screens.FIRSTCHOICE;
         btn_minus_one.setBackgroundResource(android.R.drawable.btn_default);
         btn_plus_one.setBackgroundResource(android.R.drawable.btn_default);
-        btn_minus_five.setBackgroundResource(android.R.drawable.btn_default);
-        btn_plus_five.setBackgroundResource(android.R.drawable.btn_default);
+        //btn_minus_five.setBackgroundResource(android.R.drawable.btn_default);
+        //btn_plus_five.setBackgroundResource(android.R.drawable.btn_default);
 
         btn_minus_one.setTextColor(Color.DKGRAY);
         btn_plus_one.setTextColor(Color.DKGRAY);
-        btn_minus_five.setTextColor(Color.DKGRAY);
-        btn_plus_five.setTextColor(Color.DKGRAY);
+        btn_double.setTextColor(Color.DKGRAY);
+
+
+        // btn_minus_five.setTextColor(Color.DKGRAY);
+       // btn_plus_five.setTextColor(Color.DKGRAY);
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
-        btn_minus_one.setVisibility(View.INVISIBLE);
+        btn_double.setVisibility(View.VISIBLE);
 
         //reset hand
         playerHand = new ArrayList<Integer>();
@@ -485,7 +494,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void setHitScreen() {
         currentScreen = screens.HIT;
-        btn_split.setVisibility(View.INVISIBLE);
+        //btn_split.setVisibility(View.INVISIBLE);
         btn_double.setVisibility(View.INVISIBLE);
     }
 
@@ -585,7 +594,7 @@ public class MainActivity extends ActionBarActivity {
             dealerHand.add(getNextCard());
         }
         showDealerHand(false);
-        btn_split.setVisibility(View.GONE);
+       // btn_split.setVisibility(View.GONE);
         btn_double.setVisibility(View.GONE);
         btn_hit.setVisibility(View.GONE);
         btn_stand.setVisibility(View.GONE);
@@ -615,6 +624,8 @@ public class MainActivity extends ActionBarActivity {
         if (playerWins) {
             //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
             new AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).show();
+            //mp_win = MediaPlayer.create(this,R.raw.TadaSoundEffect);
+            //mp_win.start();
 
             chips += winnings;
 
@@ -623,12 +634,17 @@ public class MainActivity extends ActionBarActivity {
         } else if (chips == 0){
             //does not actually go to the bet screen, still gives option for next round but with reset chips
             new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
+            //mp_lose = MediaPlayer.create(this,R.raw.SadTromboneSound);
+            //mp_lose.start();
+
 
             myButton.setText("New Game");
 
             //setBetScreen();//this needs to be fixed
         } else if (!playerWins) {
             new AlertDialog("Oh no, you lost: " + winnings + " chips.", "Chips", R.drawable.alert, false, this).show();
+            //mp_lose = MediaPlayer.create(this,R.raw.SadTromboneSound);
+            //mp_lose.start();
 
             myButton.setText("Next Round");
 
