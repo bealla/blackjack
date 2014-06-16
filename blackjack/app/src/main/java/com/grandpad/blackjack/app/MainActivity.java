@@ -74,12 +74,8 @@ public class MainActivity extends ActionBarActivity {
         btn_hit = (Button) findViewById(R.id.btn_hit);
         btn_stand = (Button) findViewById(R.id.btn_stand);
 
-
-        //TODO fix the betting buttons
         btn_minus_one = (Button) findViewById(R.id.btn_hit);
-        //btn_minus_five = (Button) findViewById(R.id.btn_double);
         btn_plus_one = (Button) findViewById(R.id.btn_stand);
-        //btn_plus_five = (Button) findViewById(R.id.btn_stand);
 
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
@@ -127,11 +123,8 @@ public class MainActivity extends ActionBarActivity {
     public void hit(View v) {
         switch (currentScreen) {
             case BET:
-                if (chips > currentBet) {
-                    currentBet++;
+                currentBet -= 5;
                     updateBet();
-                } else
-                    notEnoughChips();
                 break;//plus 1
             case FIRSTCHOICE://hits then set screen to hit
                 playerHand.add(getNextCard());
@@ -235,10 +228,6 @@ public class MainActivity extends ActionBarActivity {
         playerHand.add(getNextCard());
         dealerHand.add(getNextCard());
 
-        //if (calculateValue(playerHand.get(0)) == calculateValue(playerHand.get(1)))
-        //  btn_split.setActivated(true);
-        //else
-        //  btn_split.setActivated(false);
         //display hands
         showPlayerHand();
         showDealerHand(true);
