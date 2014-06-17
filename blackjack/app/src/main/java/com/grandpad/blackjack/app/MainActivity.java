@@ -2,6 +2,7 @@ package com.grandpad.blackjack.app;
 
 //import android.app.AlertDialog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -595,20 +596,21 @@ public class MainActivity extends ActionBarActivity {
         Button myButton = new Button(this);
         //TextView winnerText = new TextView(this);
         if (playerWins) {
+            final int handlerWinnings = winnings;
+            final Context thisContext = this;
             //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     // Do something after 5s = 5000ms
-                    //TODO make the last parameter and winnings work when wrapped up in the run funciton, add delay before displaying dialog for all results
-                    //new AlertDialog("Congratulations, You've won: " + winnings + " chips!", "Chips",  R.drawable.alert, false, this).show();
+                    new AlertDialog("Congratulations, You've won: " + handlerWinnings + " chips!", "Chips",  R.drawable.alert, false, thisContext).show();
 
 
                 }
-            }, 5000);
+            }, 3000);
 
-            //TODO add sounds into raw folder and see if this media player works
+
             mp_win = MediaPlayer.create(this, R.raw.tadasoundeffect);
             mp_win.start();
 
@@ -618,7 +620,21 @@ public class MainActivity extends ActionBarActivity {
 
         } else if (chips == 0){
             //does not actually go to the bet screen, still gives option for next round but with reset chips
-            new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, this).show();
+
+            final Context thisContext = this;
+            //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 5s = 5000ms
+                    new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, thisContext).show();
+
+
+                }
+            }, 3000);
+
+
             mp_lose = MediaPlayer.create(this, R.raw.sadtrombonesound);
             mp_lose.start();
 
@@ -627,7 +643,20 @@ public class MainActivity extends ActionBarActivity {
 
             //setBetScreen();//this needs to be fixed
         } else if (!playerWins) {
-            new AlertDialog("Oh no, you lost: " + winnings + " chips.", "Chips", R.drawable.alert, false, this).show();
+            final int handlerWinnings = winnings;
+            final Context thisContext = this;
+            //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 5s = 5000ms
+                    new AlertDialog("Oh no, you lost: " + handlerWinnings + " chips.", "Chips", R.drawable.alert, false, thisContext).show();
+
+
+                }
+            }, 3000);
+
             mp_lose = MediaPlayer.create(this, R.raw.sadtrombonesound);
             mp_lose.start();
 
