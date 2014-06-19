@@ -145,7 +145,8 @@ public class MainActivity extends ActionBarActivity {
     public void stand(View v) {
         switch (currentScreen) {
             case BET:
-                currentBet -= 5;
+                if (currentBet >= 5)
+                    currentBet -= 5;
                 updateBet();
                 break;//minus 5
             case FIRSTCHOICE://stop and set screen to game over
