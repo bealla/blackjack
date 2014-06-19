@@ -194,8 +194,8 @@ public class MainActivity extends ActionBarActivity {
         btn_minus_one.setBackgroundResource(R.drawable.btn_red);
         btn_plus_one.setBackgroundResource(R.drawable.btn_green);
 
-        btn_minus_one.setText("-1");
-        btn_plus_one.setText("+1");
+        btn_minus_one.setText("-5");
+        btn_plus_one.setText("+5");
         btn_minus_one.setTextColor(Color.WHITE);
         btn_plus_one.setTextColor(Color.WHITE);
         btn_double.setVisibility(View.INVISIBLE);
@@ -594,21 +594,21 @@ public class MainActivity extends ActionBarActivity {
 
 
         Button myButton = new Button(this);
-        //TextView winnerText = new TextView(this);
+
         if (playerWins) {
             final int handlerWinnings = winnings;
             final Context thisContext = this;
-            //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // Do something after 5s = 5000ms
+                    // Do something after 2s = 2000ms
                     new AlertDialog("Congratulations, You've won: " + handlerWinnings + " chips!", "Chips",  R.drawable.alert, false, thisContext).show();
 
 
                 }
-            }, 3000);
+            }, 2000);
 
 
             mp_win = MediaPlayer.create(this, R.raw.tadasoundeffect);
@@ -622,17 +622,17 @@ public class MainActivity extends ActionBarActivity {
             //does not actually go to the bet screen, still gives option for next round but with reset chips
 
             final Context thisContext = this;
-            //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // Do something after 5s = 5000ms
+                    // Do something after 2s = 2000ms
                     new AlertDialog("Oh no, you lost, here are 1000 chips to start a new game", "New Game",  R.drawable.alert, false, thisContext).show();
 
 
                 }
-            }, 3000);
+            }, 2000);
 
 
             mp_lose = MediaPlayer.create(this, R.raw.sadtrombonesound);
@@ -641,21 +641,21 @@ public class MainActivity extends ActionBarActivity {
 
             myButton.setText("New Game");
 
-            //setBetScreen();//this needs to be fixed
+
         } else if (!playerWins) {
             final int handlerWinnings = winnings;
             final Context thisContext = this;
-            //winnerText.setText("Congratulations, You've won: " + winnings + " chips!");
+
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // Do something after 5s = 5000ms
+                    // Do something after 2s = 2000ms
                     new AlertDialog("Oh no, you lost: " + handlerWinnings + " chips.", "Chips", R.drawable.alert, false, thisContext).show();
 
 
                 }
-            }, 3000);
+            }, 2000);
 
             mp_lose = MediaPlayer.create(this, R.raw.sadtrombonesound);
             mp_lose.start();
@@ -667,9 +667,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        //winnerText.setWidth(175);
-        //winnerText.setHeight(100);
-        //myButton.setText("Next Round");
+
         myButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
@@ -678,7 +676,7 @@ public class MainActivity extends ActionBarActivity {
         });
         LinearLayout ll_rightColumn = (LinearLayout) findViewById(R.id.ll_rightColumn);
 
-        //ll_rightColumn.addView(winnerText);
+
         ll_rightColumn.addView(myButton, 175, 100);
 
         settings.edit().putInt("chips", chips).commit();
