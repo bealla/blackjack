@@ -1,34 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
-        <rotate
-            android:fromDegrees="250"
-            android:pivotX="30%"
-            android:pivotY="40%"
-            android:toDegrees="250">
-            <shape android:shape="rectangle">
-                <stroke
-                    android:width="1dp"
-                    android:color="#53933f" />
-                <solid android:color="#70c656" />
-            </shape>
-        </rotate>
+        <shape>
+            <solid android:color="#ef4444" />
+            <stroke android:width="1dp" android:color="#992f2f" />
+            <corners android:radius="3dp" />
+            <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
+        </shape>
     </item>
     <item>
-        <rotate
-            android:fromDegrees="45"
-            android:pivotX="-40%"
-            android:pivotY="87%"
-            android:toDegrees="45">
-            <shape android:shape="rectangle">
-                <gradient
-                    android:angle="270"
-                    android:endColor="#53933f"
-                    android:startColor="#70c656" />
-                <stroke
-                    android:width="1dp"
-                    android:color="#53933f" />
-            </shape>
-        </rotate>
+        <shape>
+            <gradient android:angle="270" android:endColor="#992f2f" android:startColor="#ef4444" />
+            <stroke android:width="1dp" android:color="#992f2f" />
+            <corners android:radius="3dp" />
+            <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
+        </shape>
     </item>
-</layer-list>
+</selector>
