@@ -34,8 +34,8 @@ public class MainActivity extends ActionBarActivity {
     Button btn_hit;
     Button btn_stand;
     //alt names for the buttons listed above
-    Button btn_minus_one;
-    Button btn_plus_one;
+    Button btn_minus_five;
+    Button btn_plus_five;
     //standalone buttons
     Button btn_bet;
     Button btn_cancel_bet;
@@ -75,8 +75,8 @@ public class MainActivity extends ActionBarActivity {
         btn_hit = (Button) findViewById(R.id.btn_hit);
         btn_stand = (Button) findViewById(R.id.btn_stand);
 
-        btn_plus_one = (Button) findViewById(R.id.btn_hit);
-        btn_minus_one = (Button) findViewById(R.id.btn_stand);
+        btn_plus_five = (Button) findViewById(R.id.btn_hit);
+        btn_minus_five = (Button) findViewById(R.id.btn_stand);
 
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
@@ -188,13 +188,13 @@ public class MainActivity extends ActionBarActivity {
         currentScreen = screens.BET;
 
 
-        btn_minus_one.setBackgroundResource(R.drawable.btn_red);
-        btn_plus_one.setBackgroundResource(R.drawable.btn_green);
+        btn_minus_five.setBackgroundResource(R.drawable.btn_red);
+        btn_plus_five.setBackgroundResource(R.drawable.btn_green);
 
-        btn_minus_one.setText("-5");
-        btn_plus_one.setText("+5");
-        btn_minus_one.setTextColor(Color.WHITE);
-        btn_plus_one.setTextColor(Color.WHITE);
+        btn_minus_five.setText("-5");
+        btn_plus_five.setText("+5");
+        btn_minus_five.setTextColor(Color.WHITE);
+        btn_plus_five.setTextColor(Color.WHITE);
         btn_double.setVisibility(View.INVISIBLE);
     }
 
@@ -202,15 +202,15 @@ public class MainActivity extends ActionBarActivity {
 
 
         currentScreen = screens.FIRSTCHOICE;
-        btn_minus_one.setBackgroundResource(android.R.drawable.btn_default);
-        btn_plus_one.setBackgroundResource(android.R.drawable.btn_default);
+        btn_minus_five.setBackgroundResource(android.R.drawable.btn_default);
+        btn_plus_five.setBackgroundResource(android.R.drawable.btn_default);
 
-        btn_minus_one.setTextColor(Color.DKGRAY);
-        btn_plus_one.setTextColor(Color.DKGRAY);
+        btn_minus_five.setTextColor(Color.DKGRAY);
+        btn_plus_five.setTextColor(Color.DKGRAY);
         btn_double.setTextColor(Color.DKGRAY);
 
-        btn_minus_one.setText("Hit");
-        btn_plus_one.setText("Stand");
+        btn_minus_five.setText("Stand");
+        btn_plus_five.setText("Hit");
 
         btn_bet.setVisibility(View.INVISIBLE);
         btn_cancel_bet.setVisibility(View.INVISIBLE);
