@@ -75,8 +75,8 @@ public class MainActivity extends ActionBarActivity {
         btn_hit = (Button) findViewById(R.id.btn_hit);
         btn_stand = (Button) findViewById(R.id.btn_stand);
 
-        btn_minus_one = (Button) findViewById(R.id.btn_hit);
-        btn_plus_one = (Button) findViewById(R.id.btn_stand);
+        btn_plus_one = (Button) findViewById(R.id.btn_hit);
+        btn_minus_one = (Button) findViewById(R.id.btn_stand);
 
         btn_bet = (Button) findViewById(R.id.btn_bet);
         btn_cancel_bet = (Button) findViewById(R.id.btn_cancel_bet);
@@ -97,12 +97,8 @@ public class MainActivity extends ActionBarActivity {
     public void doubleHand(View v) {
         switch (currentScreen) {
             case BET:
-                if (currentBet > 5)
-                    currentBet -= 5;
-                else
-                    currentBet = 0;
-                updateBet();
-                break;//minus 5
+                //do nothing. be invisible
+                break;//plus 5
             case FIRSTCHOICE://set double down and goto game over
                 // make sure doesn't exceed chips available
                 if (chips >= currentBet * 2) {
@@ -124,9 +120,12 @@ public class MainActivity extends ActionBarActivity {
     public void hit(View v) {
         switch (currentScreen) {
             case BET:
-                currentBet -= 5;
-                    updateBet();
-                break;//plus 1
+                if (chips >= currentBet + 5)
+                    currentBet += 5;
+                else
+                    notEnoughChips();
+                updateBet();
+                break;
             case FIRSTCHOICE://hits then set screen to hit
                 playerHand.add(getNextCard());
                 setHitScreen();
@@ -146,12 +145,9 @@ public class MainActivity extends ActionBarActivity {
     public void stand(View v) {
         switch (currentScreen) {
             case BET:
-                if (chips >= currentBet + 5) {
-                    currentBet += 5;
-                    updateBet();
-                } else
-                    notEnoughChips();
-                break;//plus 5
+                currentBet -= 5;
+                updateBet();
+                break;//minus 5
             case FIRSTCHOICE://stop and set screen to game over
                 setResultScreen();
                 break;
